@@ -1,0 +1,24 @@
+[ 2021-03-30T00:14:48+08:00 ] 127.0.0.1 /Publiccss/common.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000953s ]
+ERR: 无法加载模块:Publiccss
+
+[ 2021-03-30T02:01:59+08:00 ] 127.0.0.1 /jscss/admin/design/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000005s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000470s ]
+ERR: 无法加载模块:Jscss
+
+[ 2021-03-30T02:02:49+08:00 ] 127.0.0.1 /Public/jscss/admin/design/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+ERR: 无法加载模块:Public
+
+[ 2021-03-30T21:20:05+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001478s ]
+ERR: 无法加载模块:Favicon
+

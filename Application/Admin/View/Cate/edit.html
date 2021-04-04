@@ -1,0 +1,46 @@
+<extend name="Index/index"/>
+<block name="main">
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/Admin/Cate/update" method="POST" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <input type="hidden" name="cid" value="{$_GET['cid']}">
+                            <tr>
+                                <th><i class="require-red">*</i>所属分区：</th>
+                                <td>
+                                    <select name="pid" id="">
+                                        <option value="">选择分区</option>
+                                        <?php foreach($parts as $k=>$v) : ?>
+                                        <option value="{$k}" <?php if($cate['pid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>版块名：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="cname" size="50" value="{$cate['cname']}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+</block>

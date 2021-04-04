@@ -1,0 +1,79 @@
+<extend name="Index/index"/>
+<block name="main">
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/Admin/Cate/index" method="GET">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">分区:</th>
+                            <td>
+                                <select name="pid" id="">
+                                    <option value="">全部</option>
+                                    <?php foreach($parts as $k=>$v) : ?>
+                                    <option value="{$k}" <?php if($cond['pid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <th width="70">版块:</th>
+                            <td>
+                                <select name="cid" id="">
+                                    <option value="">全部</option>
+                                    <?php foreach($cates_list as $k=>$v) : ?>
+                                    <option value="{$k}" <?php if($cond['cid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <th width="70">版主:</th>
+                            <td>
+                                <select name="uid" id="">
+                                    <option value="">全部</option>
+                                    <?php foreach($users as $k=>$v) : ?>
+                                    <option value="{$k}" <?php if($cond['pid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="btn btn-primary btn2" value="查询" type="submit">
+                                <a href="/Admin/Cate" class="btn btn-primary btn2">返回</a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <!-- <th>分区编号</th> -->
+                            <th>分区名</th>
+                            <!-- <th>版块编号</th> -->
+                            <th>版块名</th>
+                            <th>版主</th>
+                            <th>操作</th>
+                        </tr>
+                        <?php foreach($cates as $k=>$v) :?>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>{$v['pid']}--{$parts[$v['pid']]}</td>
+                            <!-- <td></td> -->
+                            <td>{$v.cid}--{$v['cname']}</td>    
+                            <td>{$users[$v['uid']]}</td>
+                            <td>
+                                <a class="link-update" href="/Admin/Cate/edit?cid={$v['cid']}">修改</a>
+                                <a class="link-del" href="/Admin/Cate/del?cid={$v['cid']}">删除</a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    <div class="list-page">{$show}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</block>

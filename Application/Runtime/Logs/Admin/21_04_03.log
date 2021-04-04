@@ -1,0 +1,104 @@
+[ 2021-04-03T08:51:33+08:00 ] 127.0.0.1 /Admin/Part/create
+ERR: 模板不存在:./Application/Admin/View/Part/create.html
+
+[ 2021-04-03T11:30:24+08:00 ] 127.0.0.1 /Admin/Part/create
+ERR: 模板不存在:./Application/Admin/View/Part/create.html
+
+[ 2021-04-03T11:48:53+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: Call to undefined function Admin\Controller\assign()
+
+[ 2021-04-03T12:34:56+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1364:Field 'pname' doesn't have a default value
+ [ SQL语句 ] : INSERT INTO `bbs_part` () VALUES ()
+
+[ 2021-04-03T13:45:56+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T13:48:46+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T13:48:51+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T13:59:24+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T14:00:21+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T14:00:30+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T14:01:11+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T14:12:51+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T14:12:59+08:00 ] 127.0.0.1 /Admin/Part/save
+ERR: 1062:Duplicate entry '电影' for key 'pname'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pname`) VALUES ('电影')
+
+[ 2021-04-03T14:20:45+08:00 ] 127.0.0.1 /Admin/Part/delete?pid=11
+ERR: 非法操作:delete
+
+[ 2021-04-03T14:42:56+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1062:Duplicate entry '电视剧' for key 'pname'
+ [ SQL语句 ] : UPDATE `bbs_part` SET `pid`='1',`pname`='电视剧' WHERE ( pid=1 )
+
+[ 2021-04-03T15:05:01+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 模板不存在:./Application/Admin/View/Cate/index.html
+
+[ 2021-04-03T15:05:02+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 模板不存在:./Application/Admin/View/Cate/index.html
+
+[ 2021-04-03T15:05:02+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 模板不存在:./Application/Admin/View/Cate/index.html
+
+[ 2021-04-03T15:05:05+08:00 ] 127.0.0.1 /Admin/Cate/create
+ERR: 模板不存在:./Application/Admin/View/Cate/create.html
+
+[ 2021-04-03T15:54:42+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '1' for key 'PRIMARY'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pid`,`pname`) VALUES ('1','1')
+
+[ 2021-04-03T15:55:30+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '1' for key 'PRIMARY'
+ [ SQL语句 ] : INSERT INTO `bbs_part` (`pid`,`pname`) VALUES ('1','1')
+
+[ 2021-04-03T15:59:30+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1364:Field 'uid' doesn't have a default value
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('1','动作')
+
+[ 2021-04-03T16:03:22+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '选秀' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('3','选秀')
+
+[ 2021-04-03T16:03:44+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '选秀' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('3','选秀')
+
+[ 2021-04-03T16:59:09+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '选秀' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('3','选秀')
+
+[ 2021-04-03T17:00:25+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '选秀' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('3','选秀')
+
+[ 2021-04-03T17:00:28+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '选秀' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('3','选秀')
+
+[ 2021-04-03T17:06:27+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '选秀' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('2','选秀')
+

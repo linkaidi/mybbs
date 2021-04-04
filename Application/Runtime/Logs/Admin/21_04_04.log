@@ -1,0 +1,168 @@
+[ 2021-04-04T13:18:18+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '动作' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('1','动作')
+
+[ 2021-04-04T13:18:57+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '动作' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('1','动作')
+
+[ 2021-04-04T13:19:33+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '动作' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('1','动作')
+
+[ 2021-04-04T13:20:16+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '动作' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('1','动作')
+
+[ 2021-04-04T14:21:42+08:00 ] 127.0.0.1 /Admin/Cate
+ERR: syntax error, unexpected end of file
+
+[ 2021-04-04T14:21:42+08:00 ] 127.0.0.1 /Admin/Cate
+ERR: syntax error, unexpected end of file
+
+[ 2021-04-04T14:27:27+08:00 ] 127.0.0.1 /Admin/Cate
+ERR: 1054:Unknown column 'a' in 'where clause'
+ [ SQL语句 ] : SELECT `uid`,`uname` FROM `bbs_user` WHERE ( author=a ) 
+
+[ 2021-04-04T14:44:36+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:44:36+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:44:36+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:44:37+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:19+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:21+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:21+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:21+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:21+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:21+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:21+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:22+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:22+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:42+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:43+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-04T14:45:49+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '<'
+
+[ 2021-04-04T14:45:49+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '<'
+
+[ 2021-04-04T14:45:49+08:00 ] 127.0.0.1 /Admin/Cate/index?pid=1&cid=&uid=
+ERR: syntax error, unexpected '<'
+
+[ 2021-04-04T15:11:12+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T15:11:47+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T15:11:47+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T15:11:47+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T15:11:47+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T15:11:57+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T15:11:57+08:00 ] 127.0.0.1 /Admin/Cate/edit?cid=8
+ERR: Function name must be a string
+
+[ 2021-04-04T16:14:50+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '青春' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('4','青春')
+
+[ 2021-04-04T16:15:52+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '青春' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('4','青春')
+
+[ 2021-04-04T16:15:58+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: 1062:Duplicate entry '青春' for key 'cname'
+ [ SQL语句 ] : INSERT INTO `bbs_cate` (`pid`,`cname`) VALUES ('4','青春')
+
+[ 2021-04-04T16:21:15+08:00 ] 127.0.0.1 /Admin/Cate/update
+ERR: Think\Model:update方法不存在！
+
+[ 2021-04-04T17:29:07+08:00 ] 127.0.0.1 /Admin/Login/css/admin_login.css
+ERR: 非法操作:css
+
+[ 2021-04-04T17:29:12+08:00 ] 127.0.0.1 /Admin/Login/css/admin_login.css
+ERR: 非法操作:css
+
+[ 2021-04-04T17:29:19+08:00 ] 127.0.0.1 /Admin/Login/css/admin_login.css
+ERR: 非法操作:css
+
+[ 2021-04-04T21:10:30+08:00 ] 127.0.0.1 /Admin/Login/Admin/Login/doLogin
+ERR: 非法操作:Admin
+
+[ 2021-04-04T21:13:19+08:00 ] 127.0.0.1 /Admin/Login/doLogin
+ERR: 1054:Unknown column '李四' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_user` WHERE ( uname=李四 ) LIMIT 1  
+
+[ 2021-04-04T21:22:40+08:00 ] 127.0.0.1 /Admin/Login/Admin
+ERR: 非法操作:Admin
+
+[ 2021-04-04T22:01:52+08:00 ] 127.0.0.1 /Admin/Login/code1
+ERR: 非法操作:code1
+
+[ 2021-04-04T22:02:43+08:00 ] 127.0.0.1 /Admin/Login/Admin/Login/code&x=0.5964956751267616
+ERR: 非法操作:Admin
+
+[ 2021-04-04T22:02:49+08:00 ] 127.0.0.1 /Admin/Login/code&x=0.7400022432604594
+ERR: 非法操作:code&x=0.7400022432604594
+
+[ 2021-04-04T22:23:51+08:00 ] 127.0.0.1 /Admin/Common
+ERR: 无法加载控制器:Common
+
+[ 2021-04-04T22:24:01+08:00 ] 127.0.0.1 /Admin/Common
+ERR: 非法操作:index
+
+[ 2021-04-04T22:26:03+08:00 ] 127.0.0.1 /Admin/Common
+ERR: Call to a member function assign() on null
+
+[ 2021-04-04T22:26:41+08:00 ] 127.0.0.1 /Admin/Admin/Login/login
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-04T22:26:45+08:00 ] 127.0.0.1 /Admin/Admin/Login/login
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-04T22:26:46+08:00 ] 127.0.0.1 /Admin/Admin/Login/login
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-04T22:26:46+08:00 ] 127.0.0.1 /Admin/Admin/Login/login
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-04T22:30:14+08:00 ] 127.0.0.1 /Admin/user/save
+ERR: 非法操作:save
+

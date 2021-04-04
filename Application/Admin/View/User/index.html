@@ -1,0 +1,110 @@
+<extend name="Index/index"/>
+<block name="main">
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/Admin/User/index" method="GET">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="120">用户性别:</th>
+                            <td>
+                                <select name="sex" id="">
+                                    <option value="">全部</option>
+                                    <option value="x" <?php if($cond['sex'] === 'x'){ echo 'selected';}?>>保密</option>
+                                    <option value="m" <?php if($cond['sex'] === 'm'){ echo 'selected';}?>>男</option>
+                                    <option value="w" <?php if($cond['sex'] === 'w'){ echo 'selected';}?>>女</option>
+                                </select>
+                            </td>
+                            <th width="120">用户权限:</th>
+                            <td>
+                                <select name="author" id="">
+                                    <option value="">全部</option>
+                                    <option value="p" <?php if($cond['author'] === 'p'){ echo 'selected';}?>>普通用户</option>
+                                    <option value="a" <?php if($cond['author'] === 'a'){ echo 'selected';}?>>普通管理员</option>
+                                    <option value="r" <?php if($cond['author'] === 'r'){ echo 'selected';}?>>超级管理员</option>
+                                </select>
+                            </td>
+                            <th width="70">用户名:</th>
+                            <td>
+                                <input class="common-text" placeholder="#模糊查询" name="uname" value="<?php if(!(empty($cond['uname']))){echo $cond['uname'];} ?>" id="" type="text">
+                            </td>
+                            <td>
+                                <input class="btn btn-primary btn2" value="查询" type="submit">
+                                <a href="/Admin/User" class="btn btn-primary btn2">返回</a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>用户编号</th>
+                            <th>用户名</th>
+                            <th>用户头像</th>
+                            <th>用户性别</th>
+                            <th>用户权限</th>
+                            <th>用户创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <foreach name="users" item="v">
+                        <tr>
+                            <td>{$v.uid}</td>
+                            <td>{$v.uname}</td>
+                            <td>
+                                <img src="/{$v.uface}" alt="">
+                            </td>
+                            <td>
+                                <switch name="v.sex">
+                                    <case value="x">保密</case>
+                                    <case value="m">男</case>
+                                    <case value="w">女</case>
+                                </switch>
+                            </td>
+                            <td>
+                                <switch name="v.author">
+                                    <case value="p">普通用户</case>
+                                    <case value="a">普通管理员</case>
+                                    <case value="r">超级管理员</case>
+                                </switch>
+                            </td>
+                            <td>{$v.ctime|date="Y-m-d H:i:s",###}</td>
+                            <td>
+                                <a class="link-update" href="/Admin/user/edit?uid={$v.uid}">修改</a>
+                                <a class="link-del" href="/Admin/user/del?uid={$v.uid}">删除</a>
+                            </td>
+                        </tr>
+                        </foreach>
+                        <!-- <tr>
+                            <td class="tc"><input name="id[]" value="58" type="checkbox"></td>
+                            <td>
+                                <input name="ids[]" value="58" type="hidden">
+                                <input class="common-input sort-input" name="ord[]" value="0" type="text">
+                            </td>
+                            <td>58</td>
+                            <td title="黑色经典"><a target="_blank" href="#" title="黑色经典">黑色经典</a> …
+                            </td>
+                            <td>0</td>
+                            <td>35</td>
+                            <td>admin</td>
+                            <td>2013-12-30 22:34:00</td>
+                            <td></td>
+                            <td>
+                                <a class="link-update" href="#">修改</a>
+                                <a class="link-del" href="#">删除</a>
+                            </td>
+                        </tr> -->
+                    </table>
+                    <div class="list-page">{$show}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,132 @@
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/main.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/> -->
+    <script type="text/javascript" src="/Public/Admin/js/libs/modernizr.min.js"></script>
+</head>
+<body>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="index.html">首页</a></li>
+                <li><a href="http://www.mycodes.net/" target="_blank">网站首页</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><a href="#"><?=$_SESSION['userInfo']['uname']?></a></li>
+                <li><a href="#">修改密码</a></li>
+                <li><a href="/Admin/Login/logout">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1>菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                    <a href="/Admin/User/index"><i class="icon-font">&#xe003;</i>用户管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/Admin/User/index"><i class="icon-font">&#xe008;</i>查看用户</a></li>
+                        <li><a href="/Admin/User/create"><i class="icon-font">&#xe005;</i>添加用户</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/Admin/Part/index"><i class="icon-font">&#xe003;</i>分区管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/Admin/Part/index"><i class="icon-font">&#xe008;</i>查看分区</a></li>
+                        <li><a href="/Admin/Part/create"><i class="icon-font">&#xe005;</i>添加分区</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/Admin/Cate/index"><i class="icon-font">&#xe003;</i>版块管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/Admin/Cate/index"><i class="icon-font">&#xe008;</i>查看版块</a></li>
+                        <li><a href="/Admin/Cate/create"><i class="icon-font">&#xe005;</i>添加版块</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                    <ul class="sub-menu">
+                        <li><a href="design.html"><i class="icon-font">&#xe008;</i>作品管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe005;</i>博文管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe006;</i>分类管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe004;</i>留言管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe012;</i>评论管理</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe052;</i>友情链接</a></li>
+                        <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="system.html"><i class="icon-font">&#xe017;</i>系统设置</a></li>
+                        <li><a href="system.html"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
+                        <li><a href="system.html"><i class="icon-font">&#xe046;</i>数据备份</a></li>
+                        <li><a href="system.html"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/Admin/Part/index" method="GET">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">分区名:</th>
+                            <td><input class="common-text" placeholder="#模糊查询" name="pname" value="<?php if(!(empty($cond['pname']))){echo $cond['pname'];} ?>" id="" type="text"></td>
+                            <td>
+                                <input class="btn btn-primary btn2" value="查询" type="submit">
+                                <a href="/Admin/Part" class="btn btn-primary btn2">返回</a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>分区编号</th>
+                            <th>分区名</th>
+                            <th>操作</th>
+                        </tr>
+                        <?php if(is_array($parts)): foreach($parts as $key=>$v): ?><tr>
+                            <td><?php echo ($v["pid"]); ?></td>
+                            <td><?php echo ($v["pname"]); ?></td>
+                            <td>
+                                <a class="link-update" href="/Admin/Part/edit?pid=<?php echo ($v["pid"]); ?>">修改</a>
+                                <a class="link-del" href="/Admin/Part/del?pid=<?php echo ($v["pid"]); ?>">删除</a>
+                            </td>
+                        </tr><?php endforeach; endif; ?>
+                    </table>
+                    <div class="list-page"><?php echo ($show); ?></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
