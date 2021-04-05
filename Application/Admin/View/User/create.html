@@ -8,50 +8,56 @@
         </div>
         <div class="result-wrap">
             <div class="result-content">
-                <form action="/Admin/user/save" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <form action="/Admin/User/save" method="post" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
                             <tr>
                                 <th><i class="require-red">*</i>用户名：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="uname" size="50" value="" type="text">
+                                    <input class="common-text required" autocomplete="off" id="title" name="user_name" size="50" value="" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>用户密码：</th>
-                                <td><input class="common-text" name="upwd" size="50" value="" type="password"></td>
+                                <td><input class="common-text" name="user_password" size="50" value="" type="password"></td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>确认密码：</th>
-                                <td><input class="common-text" name="reupwd" size="50" value="" type="password"></td>
+                                <td><input class="common-text" name="user_repassword" size="50" value="" type="password"></td>
                             </tr>
                             <tr>
                                 <th width="120"><i class="require-red">*</i>用户权限：</th>
                                 <td>
-                                    <select name="author" id="catid" class="required">
+                                    <select name="user_level" id="catid" class="required">
                                         <option value="">请选择</option>
-                                        <option value="p">普通用户</option>
-                                        <option value="a">普通管理员</option>
-                                        <option value="r">超级管理员</option>
+                                        <option value="1">普通用户</option>
+                                        <option value="2">会员</option>
+                                        <option value="3">版主</option>
+                                        <option value="4">区主</option>
+                                        <option value="5">管理员</option>
+                                        <option value="6">站长</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <th><i class="require-red"></i>用户头像：</th>
-                                <td><input name="uface" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
+                                <td>
+                                    <input name="user_face" id="" type="file">
+                                </td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>用户性别：</th>
                                 <td>
-                                    <input class="common-text" name="sex" size="50" value="m" type="radio"> 男
-                                    <input class="common-text" name="sex" size="50" value="w" type="radio"> 女
-                                    <input class="common-text" name="sex" size="50" value="x" type="radio"> 保密
+                                    <input class="common-text" name="user_sex" size="50" value="1" type="radio"> 保密
+                                    <input class="common-text" name="user_sex" size="50" value="2" type="radio"> 男
+                                    <input class="common-text" name="user_sex" size="50" value="3" type="radio"> 女
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" value="新增" type="submit">
+                                    <a href="/Admin/User" class="btn btn6">返回</a>
                                 </td>
                             </tr>
                         </tbody></table>

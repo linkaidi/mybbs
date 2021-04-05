@@ -1,0 +1,55 @@
+[ 2021-04-05T19:05:23+08:00 ] 127.0.0.1 /Admin/Login/doLogin
+ERR: 1054:Unknown column 'uname' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_user` WHERE ( uname='李四' ) LIMIT 1  
+
+[ 2021-04-05T19:07:26+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: 1054:Unknown column 'uid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_user` ORDER BY uid LIMIT 0,3  
+
+[ 2021-04-05T19:08:01+08:00 ] 127.0.0.1 /Admin/user/save
+ERR: 1364:Field 'user_name' doesn't have a default value
+ [ SQL语句 ] : INSERT INTO `bbs_user` () VALUES ()
+
+[ 2021-04-05T19:26:07+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: 1054:Unknown column 'uid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_user` ORDER BY uid LIMIT 0,3  
+
+[ 2021-04-05T19:26:53+08:00 ] 127.0.0.1 /Admin/User/save
+ERR: 没有可以被缩略的图像资源
+
+[ 2021-04-05T19:43:56+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: Call to a member function show() on null
+
+[ 2021-04-05T19:44:09+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: Call to a member function show() on null
+
+[ 2021-04-05T19:44:21+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: Call to a member function show() on null
+
+[ 2021-04-05T21:32:47+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_part` ORDER BY pid LIMIT 0,10  
+
+[ 2021-04-05T23:22:45+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_part` ORDER BY pid LIMIT 0,10  
+
+[ 2021-04-05T23:23:03+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_part` ORDER BY pid LIMIT 0,10  
+
+[ 2021-04-05T23:28:36+08:00 ] 127.0.0.1 /Admin/Part/create
+ERR: Think\Model:filed方法不存在！
+
+[ 2021-04-05T23:35:28+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_part` ORDER BY pid LIMIT 0,10  
+
+[ 2021-04-05T23:46:58+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_part` ORDER BY pid LIMIT 0,10  
+
+[ 2021-04-05T23:55:33+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_part` ORDER BY pid LIMIT 0,10  
+

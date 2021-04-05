@@ -22,3 +22,9 @@ ERR: 无法加载模块:Favicon
 [ 2021-04-05T01:29:33+08:00 ] 127.0.0.1 /design.html
 ERR: 无法加载模块:Design
 
+[ 2021-04-05T19:04:52+08:00 ] 127.0.0.1 /favicon.ico
+ERR: 无法加载模块:Favicon
+
+[ 2021-04-05T19:04:56+08:00 ] 127.0.0.1 /favicon.ico
+ERR: 无法加载模块:Favicon
+

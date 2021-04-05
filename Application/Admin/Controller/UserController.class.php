@@ -18,67 +18,71 @@ class UserController extends CommonController {
     // 保存用户
     public function save()
     {
-        $data = $_POST;
+        // 接收添加用户表单数据
+        $user_data_array = $_POST;
 
         // 用户名不能为空
-        if (empty($data['uname'])) {
+        if (empty($user_data_array['user_name'])) {
             $this->error('用户名不能为空');
         } else {
             // 规定用户名不能包含空格字符
-            $ptn = '/^[\S]*$/';
-            $res = preg_match_all($ptn,$data['uname']);
-            if (!$res) {
+            $user_name_ptn = '/^[\S]*$/';
+            $user_name_check_result = preg_match_all($user_name_ptn,$user_data_array['user_name']);
+            if (!$user_name_check_result) {
                 $this->error('用户名不能包含空格');
             }
         }
 
         // 密码不能为空
-        if (empty($data['upwd']) || empty($data['reupwd'])) {
+        if (empty($user_data_array['user_password']) || empty($user_data_array['user_repassword'])) {
             $this->error('密码不能为空');
         } else {
             // 规定密码不能包含空格字符
-            $ptn = '/^[\S]*$/';
-            $res1 = preg_match_all($ptn,$data['upwd']);
-            $res2 = preg_match_all($ptn,$data['reupwd']);
-            if (!($res1) || !($res2)) {
+            $user_password_ptn = '/^[\S]*$/';
+            $user_password_check_result = preg_match_all($user_password_ptn,$user_data_array['user_password']);
+            $user_repassword_check_result = preg_match_all($user_password_ptn,$user_data_array['user_repassword']);
+            if (!($user_password_check_result) || !($user_repassword_check_result)) {
                 $this->error('密码不能包含空格');
             }
         }
 
         // 两次密码是否一致
-        if ($data['upwd'] !== $data['reupwd']) {
+        if ($user_data_array['user_password'] !== $user_data_array['user_repassword']) {
             $this->error('两次密码不一致');
         } else {
-            unset($data['reupwd']);
+            unset($user_data_array['user_repassword']);
         }
 
 
         // 加密密码
-        $data['upwd'] = password_hash($data['upwd'],PASSWORD_DEFAULT);
+        $user_data_array['user_password'] = password_hash($user_data_array['user_password'],PASSWORD_DEFAULT);
 
         // 如果没有选择权限，则默认选择普通用户权限
-        if ( empty($data['author']) ) {
-            $data['author'] = 'p';
+        if ( empty($user_data_array['user_level']) ) {
+            $user_data_array['user_level'] = 1;
         }
         
         // 如果用户没有选择性别，则默认选择保密
-        if ( ! (isset($_POST['sex'])) ) {
-            $data['sex'] = 'x';
+        if ( ! (isset($user_data_array['user_sex'])) ) {
+            $user_data_array['user_sex'] = 1;
         }
         
+        // 用户初始状态默认为正常状态
+        $user_data_array['user_status'] = 1;
+
         // 用户创建时间
-        $data['ctime'] = time();
+        $user_data_array['user_register_time'] = time();
 
         // 上传头像  
-        if ($_FILES['uface']['error'] !== 4) {
-            $data['uface'] = $this->doUpload();
+        if ($_FILES['user_face']['error'] !== 4) {
+            $user_data_array['user_face'] = $this->doUpload();
             $this->doSm();
         }
 
         // 保存用户数据到数据库
-        $row = M('bbs_user')->add($data);
+        $add_user_result = M('bbs_user')->add($user_data_array);
         
-        if ($row) {
+        if ($add_user_result) {
             $this->success('添加用户成功');
         } else {
             $this->error('添加用户失败');
@@ -89,50 +93,59 @@ class UserController extends CommonController {
     public function index()
     {
         // 定义一个条件空数组
-        $condient = [];
+        $search_condient = [];
 
-        // 如果传入用户性别
-        if ( ! (empty($_GET['sex'])) ) {
-            $condient['sex'] = ['eq',"{$_GET['sex']}"];
+        // 筛选用户性别
+        if ( ! (empty($_GET['user_sex'])) ) {
+            $search_condient['user_sex'] = ['eq',"{$_GET['user_sex']}"];
         }
 
-        // 如果传入用户权限
-        if ( ! (empty($_GET['author'])) ) {
-            $condient['author'] = ['eq',"{$_GET['author']}"];
+        // 筛选用户等级
+        if ( ! (empty($_GET['user_level'])) ) {
+            $search_condient['user_level'] = ['eq',"{$_GET['user_level']}"];
+        }
+
+        // 筛选用户状态
+        if ( ! (empty($_GET['user_status'])) ) {
+            $search_condient['user_status'] = ['eq',"{$_GET['user_status']}"];
         }
 
         // 如果传入用户名
-        if ( ! (empty($_GET['uname'])) ) {
-            $condient['uname'] = ['like',"%{$_GET['uname']}%"];
+        if ( ! (empty($_GET['user_name'])) ) {
+            $search_condient['user_name'] = ['like',"%{$_GET['user_name']}%"];
         }
 
-        $m = M('bbs_user');
+        // 实例化用户表
+        $user_object = M('bbs_user');
 
         // 实现分页功能
         // 查询满足要求的总记录数
-        $count = $m->where($condient)->count();
+        $user_count = $user_object->where($search_condient)->count();
+        
         // 实例化分页类 传入总记录数和每页显示的记录数(3)
-        $Page  = new \Think\Page($count,3);
+        $user_page  = new \Think\Page($user_count,4);
+        
         // 分页显示输出
-        $show  = $Page->show();
+        $page_html_show  = $user_page->show();
         
         // 从数据库读取用户数据
-        $users = $m->where($condient)
-                   ->order('uid')
-                   ->limit($Page->firstRow.','.$Page->listRows)
+        $users_data_array = $user_object->where($search_condient)
+                   ->order('user_id')
+                   ->limit($user_page->firstRow.','.$user_page->listRows)
                    ->select();
 
         // 处理显示缩略图
-        foreach ($users as $k=>$v) {
-            $users[$k]['uface'] = getSm($v['uface']); 
+        foreach ($users_data_array as $k=>$user_data_array) {
+            $users_data_array[$k]['user_face'] = getSm($user_data_array['user_face']); 
         }
 
-        $cond = $_GET;
+        // 实现再次点击搜索，原筛选条件不变
+        $keep_search_condient = $_GET;
 
         // 在模板中输出变量
-        $this->assign('users',$users);
-        $this->assign('show',$show);
-        $this->assign('cond',$cond);
+        $this->assign('users_data_array',$users_data_array);
+        $this->assign('page_html_show',$page_html_show);
+        $this->assign('keep_search_condient',$keep_search_condient);
         
         $this->display();
     }
@@ -140,11 +153,13 @@ class UserController extends CommonController {
     // 删除用户数据
     public function del()
     {
-        $uid = $_GET['uid'];
-        // 删除用户数据
-        $row = M('bbs_user')->delete($uid);
+        // 接收删除用户的ID
+        $user_id = $_GET['user_id'];
 
-        if ($row) {
+        // 删除用户数据
+        $delete_user_result = M('bbs_user')->delete($user_id);
+        
+        if ($delete_user_result) {
             $this->success('删除成功');
         } else {
             $this->error('删除失败');
@@ -154,15 +169,25 @@ class UserController extends CommonController {
     // 显示修改用户数据表单
     public function edit()
     {
-        $uid = $_GET['uid'];
-        // 查询用户数据
-        $user = M('bbs_user')->find($uid);
+        // 接收修改信息用户ID
+        $user_id = $_GET['user_id'];
         
-        // 处理显示缩略图
-        $user['uface'] = getSm($user['uface']); 
+        // 查询用户数据
+        $user_data_array = M('bbs_user')->find($user_id);
+        
+        //  如果用户原来没有头像
+        if ($user_data_array['user_face'] == null) {
+            $html_user_face = null;
+        } else {
+            //  如果用户原来有头像
+            // 处理显示缩略图
+            $user_data_array['user_face'] = getSm($user_data_array['user_face']); 
+            $html_user_face = "<img src='/{$user_data_array['user_face']}'>";
+        };
 
         // 输出模板
-        $this->assign('user',$user);
+        $this->assign('user_data_array',$user_data_array);
+        $this->assign('html_user_face',$html_user_face);
 
         $this->display();
     }
@@ -170,17 +195,20 @@ class UserController extends CommonController {
     // 接收修改用户数据，完成修改
     public function update()
     {   
-        $data = $_POST;
+        // 接收用户修改信息
+        $user_data_array = $_POST;
 
         // 上传头像
         // 如果有文件上传
-        if ($_FILES['uface']['error'] !== 4) {
-            $data['uface'] = $this->doUpload();
+        if ($_FILES['user_face']['error'] !== 4) {
+            $user_data_array['user_face'] = $this->doUpload();
             $this->doSm();
         }
 
-        $row = M('bbs_user')->where("uid=".$data['uid'])->save($data);
-        if ($row) {
+        // 
+        $update_user_result = M('bbs_user')->where("user_id=".$user_data_array['user_id'])->save($user_data_array);
+        
+        if ($update_user_result) {
             $this->success('修改成功');
         } else {
             $this->error("修改失败");
@@ -210,7 +238,7 @@ class UserController extends CommonController {
                 }
         
                 // 处理文件上传成功后的完整文件名
-                return $this->filename = $info['uface']['savepath'].$info['uface']['savename'];
+                return $this->filename = $info['user_face']['savepath'].$info['user_face']['savename'];
     }
 
     // 生成缩略图

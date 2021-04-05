@@ -1,0 +1,136 @@
+[ 2021-04-06T00:09:19+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: 1054:Unknown column 'part_id' in 'field list'
+ [ SQL语句 ] : SELECT `part_id`,`part_name` FROM `bbs_user` WHERE ( user_level=3 ) 
+
+[ 2021-04-06T00:10:17+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: syntax error, unexpected '"]); ?></td>' (T_CONSTANT_ENCAPSED_STRING)
+
+[ 2021-04-06T00:12:23+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: syntax error, unexpected 'user_id' (T_STRING), expecting ']'
+
+[ 2021-04-06T00:12:45+08:00 ] 127.0.0.1 /Admin/Part/index
+ERR: syntax error, unexpected 'endif' (T_ENDIF)
+
+[ 2021-04-06T00:40:34+08:00 ] 127.0.0.1 /Admin/Part/index?part_name=&user_name=%E5%8C%BA
+ERR: 1054:Unknown column 'u' in 'where clause'
+ [ SQL语句 ] : SELECT `user_id`,`user_name` FROM `bbs_user` WHERE ( u ) 
+
+[ 2021-04-06T00:41:17+08:00 ] 127.0.0.1 /Admin/Part/index?part_name=&user_name=%E5%8C%BA
+ERR: 1054:Unknown column '区' in 'where clause'
+ [ SQL语句 ] : SELECT `user_id`,`user_name` FROM `bbs_user` WHERE ( user_level=4 AND user_name=区 ) 
+
+[ 2021-04-06T00:41:45+08:00 ] 127.0.0.1 /Admin/Part/index?part_name=&user_name=%E5%8C%BA
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-06T00:57:58+08:00 ] 127.0.0.1 /Admin/Part/index?part_name=&user_name=1
+ERR: Call to a member function select() on array
+
+[ 2021-04-06T00:58:33+08:00 ] 127.0.0.1 /Admin/Part/index?part_name=&user_name=1
+ERR: Call to a member function buildSql() on array
+
+[ 2021-04-06T01:22:59+08:00 ] 127.0.0.1 /Admin/Part/edit?part_id=1
+ERR: Call to a member function buildSql() on array
+
+[ 2021-04-06T01:42:09+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_part` SET `part_name`='电影1',`user_id`='0' WHERE ( part_id= )
+
+[ 2021-04-06T01:44:03+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_part` SET `part_name`='电影1',`user_id`='0',`part_id`=NULL WHERE ( part_id= )
+
+[ 2021-04-06T01:44:18+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_part` SET `part_name`='电影1',`user_id`=NULL WHERE ( part_id= )
+
+[ 2021-04-06T01:44:33+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_part` SET `part_name`='电影1',`user_id`=NULL WHERE ( part_id= )
+
+[ 2021-04-06T01:45:00+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_part` SET `part_name`='电影1',`user_id`=NULL WHERE ( part_id= )
+
+[ 2021-04-06T02:19:41+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in (1) ) ORDER BY part_id' at line 1
+ [ SQL语句 ] : SELECT `part_id`,`part_name` FROM `bbs_part` WHERE ( not in (1) ) ORDER BY part_id 
+
+[ 2021-04-06T02:21:18+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in ) ORDER BY part_id' at line 1
+ [ SQL语句 ] : SELECT `part_id`,`part_name` FROM `bbs_part` WHERE ( not in ) ORDER BY part_id 
+
+[ 2021-04-06T02:22:51+08:00 ] 127.0.0.1 /Admin/Part/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in ) AND (  1 ) ) ORDER BY part_id' at line 1
+ [ SQL语句 ] : SELECT `part_id`,`part_name` FROM `bbs_part` WHERE (  part_id ) AND (  (  not in ) AND (  1 ) ) ORDER BY part_id 
+
+[ 2021-04-06T02:25:36+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_cate` ORDER BY pid LIMIT 0,5  
+
+[ 2021-04-06T02:26:53+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_cate` ORDER BY pid LIMIT 0,5  
+
+[ 2021-04-06T02:26:56+08:00 ] 127.0.0.1 /Admin/Cate/create
+ERR: 1054:Unknown column 'pid' in 'field list'
+ [ SQL语句 ] : SELECT `pid`,`pname` FROM `bbs_part` ORDER BY pid 
+
+[ 2021-04-06T02:30:40+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_cate` ORDER BY pid LIMIT 0,5  
+
+[ 2021-04-06T02:33:13+08:00 ] 127.0.0.1 /Admin/Cate/create
+ERR: 1054:Unknown column 'pid' in 'field list'
+ [ SQL语句 ] : SELECT `pid`,`pname` FROM `bbs_part` ORDER BY pid 
+
+[ 2021-04-06T02:34:43+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_cate` ORDER BY pid LIMIT 0,5  
+
+[ 2021-04-06T02:42:44+08:00 ] 127.0.0.1 /Admin/Cate/save
+ERR: Call to undefined function Admin\Controller\ptinr_r()
+
+[ 2021-04-06T02:47:39+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_cate` ORDER BY pid LIMIT 0,5  
+
+[ 2021-04-06T02:51:08+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'pid' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_cate` ORDER BY pid LIMIT 0,5  
+
+[ 2021-04-06T02:52:02+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'cid' in 'field list'
+ [ SQL语句 ] : SELECT `cid`,`cname` FROM `bbs_cate` ORDER BY cid 
+
+[ 2021-04-06T02:52:45+08:00 ] 127.0.0.1 /Admin/Cate/index
+ERR: 1054:Unknown column 'author' in 'where clause'
+ [ SQL语句 ] : SELECT `user_id`,`user_name` FROM `bbs_user` WHERE ( author=3 ) 
+
+[ 2021-04-06T03:11:38+08:00 ] 127.0.0.1 /Admin/Cate/edit?cate_id=1
+ERR: 1054:Unknown column 'pid' in 'field list'
+ [ SQL语句 ] : SELECT `pid`,`pname` FROM `bbs_part` ORDER BY pid 
+
+[ 2021-04-06T03:15:41+08:00 ] 127.0.0.1 /Admin/Cate/edit?cate_id=1
+ERR: 1054:Unknown column 'pate_id' in 'field list'
+ [ SQL语句 ] : SELECT `pate_id`,`pate_name` FROM `bbs_part` ORDER BY pate_id 
+
+[ 2021-04-06T03:21:13+08:00 ] 127.0.0.1 /Admin/Cate/edit?cate_id=1
+ERR: 1054:Unknown column 'user_name' in 'field list'
+ [ SQL语句 ] : SELECT `user_id`,`user_name` FROM `bbs_part` WHERE ( user_level=3 ) ORDER BY user_id 
+
+[ 2021-04-06T03:27:54+08:00 ] 127.0.0.1 /Admin/Cate/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `cid`,`cname` FROM `bbs_cate` WHERE ( pid= ) 
+
+[ 2021-04-06T03:31:22+08:00 ] 127.0.0.1 /Admin/Cate/update
+ERR: 1054:Unknown column 'pid' in 'where clause'
+ [ SQL语句 ] : SELECT `cate_id`,`cate_name` FROM `bbs_cate` WHERE ( pid=1 ) 
+
+[ 2021-04-06T03:31:43+08:00 ] 127.0.0.1 /Admin/Cate/update
+ERR: 1054:Unknown column 'pid' in 'where clause'
+ [ SQL语句 ] : SELECT `cate_id`,`cate_name` FROM `bbs_cate` WHERE ( pid=1 ) 
+
+[ 2021-04-06T03:34:53+08:00 ] 127.0.0.1 /Admin/Cate/update
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : UPDATE `bbs_cate` SET `cate_id`='1',`part_id`='1',`user_id`=NULL,`cate_name`='动作' WHERE ( cid= )
+

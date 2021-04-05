@@ -98,19 +98,27 @@
                                 <th><i class="require-red">*</i>所属分区：</th>
                                 <td>
                                     
-                                    <select id="" name="pid" onchange="" ondblclick="" class="" ><option value="" >选择分区</option><?php  foreach($parts as $key=>$val) { ?><option value="<?php echo $key ?>"><?php echo $val ?></option><?php } ?></select>
+                                    <select id="" name="part_id" onchange="" ondblclick="" class="" ><option value="" >选择分区</option><?php  foreach($bbs_parts_info as $key=>$val) { ?><option value="<?php echo $key ?>"><?php echo $val ?></option><?php } ?></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>版主：</th>
+                                <td>
+                                    
+                                    <select id="" name="user_id" onchange="" ondblclick="" class="" ><option value="" >选择版主</option><?php  foreach($bbs_users_info as $key=>$val) { ?><option value="<?php echo $key ?>"><?php echo $val ?></option><?php } ?></select>
                                 </td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>版块名：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cname" size="50" value="" type="text">
+                                    <input class="common-text required" autocomplete="off" id="title" name="cate_name" size="50" value="" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" value="新增" type="submit">
+                                    <a href="/Admin/Cate" class="btn btn6">返回</a>
                                     
                                 </td>
                             </tr>

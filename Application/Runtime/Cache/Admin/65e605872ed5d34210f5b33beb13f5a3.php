@@ -95,25 +95,36 @@
                         <tr>
                             <th width="120">用户性别:</th>
                             <td>
-                                <select name="sex" id="">
+                                <select name="user_sex" id="">
                                     <option value="">全部</option>
-                                    <option value="x" <?php if($cond['sex'] === 'x'){ echo 'selected';}?>>保密</option>
-                                    <option value="m" <?php if($cond['sex'] === 'm'){ echo 'selected';}?>>男</option>
-                                    <option value="w" <?php if($cond['sex'] === 'w'){ echo 'selected';}?>>女</option>
+                                    <option value="1" <?php if($keep_search_condient['user_sex'] === '1'){ echo 'selected';}?>>保密</option>
+                                    <option value="2" <?php if($keep_search_condient['user_sex'] === '2'){ echo 'selected';}?>>男</option>
+                                    <option value="3" <?php if($keep_search_condient['user_sex'] === '3'){ echo 'selected';}?>>女</option>
                                 </select>
                             </td>
-                            <th width="120">用户权限:</th>
+                            <th width="120">用户等级:</th>
                             <td>
-                                <select name="author" id="">
+                                <select name="user_level" id="">
                                     <option value="">全部</option>
-                                    <option value="p" <?php if($cond['author'] === 'p'){ echo 'selected';}?>>普通用户</option>
-                                    <option value="a" <?php if($cond['author'] === 'a'){ echo 'selected';}?>>普通管理员</option>
-                                    <option value="r" <?php if($cond['author'] === 'r'){ echo 'selected';}?>>超级管理员</option>
+                                    <option value="1" <?php if($keep_search_condient['user_level'] === '1'){ echo 'selected';}?>>普通用户</option>
+                                    <option value="2" <?php if($keep_search_condient['user_level'] === '2'){ echo 'selected';}?>>会员</option>
+                                    <option value="3" <?php if($keep_search_condient['user_level'] === '3'){ echo 'selected';}?>>版主</option>
+                                    <option value="4" <?php if($keep_search_condient['user_level'] === '4'){ echo 'selected';}?>>区主</option>
+                                    <option value="5" <?php if($keep_search_condient['user_level'] === '5'){ echo 'selected';}?>>管理员</option>
+                                    <option value="6" <?php if($keep_search_condient['user_level'] === '6'){ echo 'selected';}?>>站长</option>
+                                </select>
+                            </td>
+                            <th width="120">用户状态:</th>
+                            <td>
+                                <select name="user_status" id="">
+                                    <option value="">全部</option>
+                                    <option value="1" <?php if($keep_search_condient['user_status'] === '1'){ echo 'selected';}?>>正常</option>
+                                    <option value="2" <?php if($keep_search_condient['user_status'] === '2'){ echo 'selected';}?>>禁用</option>
                                 </select>
                             </td>
                             <th width="70">用户名:</th>
                             <td>
-                                <input class="common-text" placeholder="#模糊查询" name="uname" value="<?php if(!(empty($cond['uname']))){echo $cond['uname'];} ?>" id="" type="text">
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="user_name" value="<?php if(!(empty($keep_search_condient['user_name']))){echo $keep_search_condient['user_name'];} ?>" id="" type="text">
                             </td>
                             <td>
                                 <input class="btn btn-primary btn2" value="查询" type="submit">
@@ -133,30 +144,38 @@
                             <th>用户名</th>
                             <th>用户头像</th>
                             <th>用户性别</th>
+                            <th>用户状态</th>
                             <th>用户权限</th>
                             <th>用户创建时间</th>
                             <th>操作</th>
                         </tr>
-                        <?php if(is_array($users)): foreach($users as $key=>$v): ?><tr>
-                            <td><?php echo ($v["uid"]); ?></td>
-                            <td><?php echo ($v["uname"]); ?></td>
+                        <?php if(is_array($users_data_array)): foreach($users_data_array as $key=>$v): ?><tr>
+                            <td><?php echo ($v["user_id"]); ?></td>
+                            <td><?php echo ($v["user_name"]); ?></td>
                             <td>
-                                <img src="/<?php echo ($v["uface"]); ?>" alt="">
+                                <img src="/<?php echo ($v["user_face"]); ?>" alt="">
                             </td>
                             <td>
-                                <?php switch($v["sex"]): case "x": ?>保密<?php break;?>
-                                    <?php case "m": ?>男<?php break;?>
-                                    <?php case "w": ?>女<?php break; endswitch;?>
+                                <?php switch($v["user_sex"]): case "1": ?>保密<?php break;?>
+                                    <?php case "2": ?>男<?php break;?>
+                                    <?php case "3": ?>女<?php break; endswitch;?>
                             </td>
                             <td>
-                                <?php switch($v["author"]): case "p": ?>普通用户<?php break;?>
-                                    <?php case "a": ?>普通管理员<?php break;?>
-                                    <?php case "r": ?>超级管理员<?php break; endswitch;?>
+                                <?php switch($v["user_status"]): case "1": ?>正常<?php break;?>
+                                    <?php case "2": ?>禁用<?php break; endswitch;?>
                             </td>
-                            <td><?php echo (date("Y-m-d H:i:s",$v["ctime"])); ?></td>
                             <td>
-                                <a class="link-update" href="/Admin/user/edit?uid=<?php echo ($v["uid"]); ?>">修改</a>
-                                <a class="link-del" href="/Admin/user/del?uid=<?php echo ($v["uid"]); ?>">删除</a>
+                                <?php switch($v["user_level"]): case "1": ?>普通用户<?php break;?>
+                                    <?php case "2": ?>会员<?php break;?>
+                                    <?php case "3": ?>版主<?php break;?>
+                                    <?php case "4": ?>区主<?php break;?>
+                                    <?php case "5": ?>管理员<?php break;?>
+                                    <?php case "6": ?>站长<?php break; endswitch;?>
+                            </td>
+                            <td><?php echo (date("Y-m-d H:i:s",$v["user_register_time"])); ?></td>
+                            <td>
+                                <a class="link-update" href="/Admin/user/edit?user_id=<?php echo ($v["user_id"]); ?>">修改</a>
+                                <a class="link-del" href="/Admin/user/del?user_id=<?php echo ($v["user_id"]); ?>">删除</a>
                             </td>
                         </tr><?php endforeach; endif; ?>
                         <!-- <tr>
@@ -179,7 +198,7 @@
                             </td>
                         </tr> -->
                     </table>
-                    <div class="list-page"><?php echo ($show); ?></div>
+                    <div class="list-page"><?php echo ($page_html_show); ?></div>
                 </div>
             </form>
         </div>

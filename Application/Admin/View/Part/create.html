@@ -14,14 +14,25 @@
                             <tr>
                                 <th><i class="require-red">*</i>分区名：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="pname" size="50" value="" type="text">
+                                    <input class="common-text required" id="title" autocomplete="off" name="part_name" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><i class="require-red">*</i>区主：</th>
+                                <td>
+                                    <select name="user_id" id="catid" class="required">
+                                        <option value="">请选择</option>
+                                        <?php foreach ($part_users as $user_id=>$user_name) :?>
+                                        <option value="<?=$user_id?>">{$user_name}</option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
-                                    <!-- <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button"> -->
+                                    <input class="btn btn-primary btn6 mr10" value="新增" type="submit">
+                                    <a href="/Admin/Part" class="btn btn6">返回</a>
                                 </td>
                             </tr>
                         </tbody></table>

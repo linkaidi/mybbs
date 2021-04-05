@@ -11,28 +11,28 @@
                         <tr>
                             <th width="70">分区:</th>
                             <td>
-                                <select name="pid" id="">
+                                <select name="part_id" id="">
                                     <option value="">全部</option>
-                                    <?php foreach($parts as $k=>$v) : ?>
-                                    <option value="{$k}" <?php if($cond['pid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                    <?php foreach($bbs_parts_name_list as $bbs_parts_id=>$bbs_parts_name) : ?>
+                                    <option value="{$bbs_parts_id}" <?php if($get_cate_data['part_id'] === "$bbs_parts_id"){echo 'selected';}?>>{$bbs_parts_name}</option>
                                     <?php endforeach; ?>
                                 </select>
                             </td>
                             <th width="70">版块:</th>
                             <td>
-                                <select name="cid" id="">
+                                <select name="cate_id" id="">
                                     <option value="">全部</option>
-                                    <?php foreach($cates_list as $k=>$v) : ?>
-                                    <option value="{$k}" <?php if($cond['cid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                    <?php foreach($bbs_cates_name_list as $bbs_cates_id=>$bbs_cates_name) : ?>
+                                    <option value="{$bbs_cates_id}" <?php if($get_cate_data['cate_id'] === "$bbs_cates_id"){echo 'selected';}?>>{$bbs_cates_name}</option>
                                     <?php endforeach; ?>
                                 </select>
                             </td>
                             <th width="70">版主:</th>
                             <td>
-                                <select name="uid" id="">
+                                <select name="user_id" id="">
                                     <option value="">全部</option>
-                                    <?php foreach($users as $k=>$v) : ?>
-                                    <option value="{$k}" <?php if($cond['pid'] === "$k"){echo 'selected';}?>>{$v}</option>
+                                    <?php foreach($bbs_users_name_list as $bbs_users_id=>$bbs_users_name) : ?>
+                                    <option value="{$bbs_users_id}" <?php if($get_cate_data['user_id'] === "$bbs_users_id"){echo 'selected';}?>>{$bbs_users_name}</option>
                                     <?php endforeach; ?>
                                 </select>
                             </td>
@@ -50,28 +50,28 @@
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <!-- <th>分区编号</th> -->
+                            <th>分区ID</th>
                             <th>分区名</th>
-                            <!-- <th>版块编号</th> -->
+                            <th>版块ID</th>
                             <th>版块名</th>
                             <th>版主</th>
                             <th>操作</th>
                         </tr>
-                        <?php foreach($cates as $k=>$v) :?>
+                        <?php foreach($bbs_cates as $bbs_cate) :?>
                         <tr>
-                            <!-- <td></td> -->
-                            <td>{$v['pid']}--{$parts[$v['pid']]}</td>
-                            <!-- <td></td> -->
-                            <td>{$v.cid}--{$v['cname']}</td>    
-                            <td>{$users[$v['uid']]}</td>
+                            <td>{$bbs_cate['part_id']}</td>
+                            <td>{$bbs_parts_name_list[$bbs_cate['part_id']]}</td>
+                            <td>{$bbs_cate.cate_id}</td>
+                            <td>{$bbs_cate['cate_name']}</td>    
+                            <td>{$bbs_users_name_list[$bbs_cate['user_id']]}</td>
                             <td>
-                                <a class="link-update" href="/Admin/Cate/edit?cid={$v['cid']}">修改</a>
-                                <a class="link-del" href="/Admin/Cate/del?cid={$v['cid']}">删除</a>
+                                <a class="link-update" href="/Admin/Cate/edit?cate_id={$bbs_cate['cate_id']}">修改</a>
+                                <a class="link-del" href="/Admin/Cate/del?cate_id={$bbs_cate['cate_id']}">删除</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
                     </table>
-                    <div class="list-page">{$show}</div>
+                    <div class="list-page">{$cates_page_show}</div>
                 </div>
             </form>
         </div>

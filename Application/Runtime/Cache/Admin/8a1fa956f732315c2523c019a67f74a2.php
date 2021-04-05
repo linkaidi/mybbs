@@ -92,8 +92,10 @@
                 <form action="/Admin/Part/index" method="GET">
                     <table class="search-tab">
                         <tr>
-                            <th width="70">分区名:</th>
-                            <td><input class="common-text" placeholder="#模糊查询" name="pname" value="<?php if(!(empty($cond['pname']))){echo $cond['pname'];} ?>" id="" type="text"></td>
+                            <th width="70">分区:</th>
+                            <td><input class="common-text" autocomplete="off" placeholder="#模糊查询" name="part_name" value="<?php if(!(empty($keep_search_condient['part_name']))){echo $keep_search_condient['part_name'];} ?>" id="" type="text"></td>
+                            <th width="70">区主:</th>
+                            <td><input class="common-text" autocomplete="off" placeholder="#模糊查询" name="user_name" value="<?php if(!(empty($keep_search_condient['user_name']))){echo $keep_search_condient['user_name'];} ?>" id="" type="text"></td>
                             <td>
                                 <input class="btn btn-primary btn2" value="查询" type="submit">
                                 <a href="/Admin/Part" class="btn btn-primary btn2">返回</a>
@@ -108,20 +110,25 @@
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th>分区编号</th>
+                            <th>分区ID</th>
                             <th>分区名</th>
+                            <th>区主</th>
                             <th>操作</th>
                         </tr>
-                        <?php if(is_array($parts)): foreach($parts as $key=>$v): ?><tr>
-                            <td><?php echo ($v["pid"]); ?></td>
-                            <td><?php echo ($v["pname"]); ?></td>
+                        <foreach name="bbs_parts_array" item="v">
+                        <?php foreach ($bbs_parts_array as $bbs_part_array) :?>
+                        <tr>
+                            <td><?php echo ($bbs_part_array['part_id']); ?></td>
+                            <td><?php echo ($bbs_part_array['part_name']); ?></td>
+                            <td><?php echo ($bbs_user_array[$bbs_part_array['user_id']]); ?></td>
                             <td>
-                                <a class="link-update" href="/Admin/Part/edit?pid=<?php echo ($v["pid"]); ?>">修改</a>
-                                <a class="link-del" href="/Admin/Part/del?pid=<?php echo ($v["pid"]); ?>">删除</a>
+                                <a class="link-update" href="/Admin/Part/edit?part_id=<?php echo ($bbs_part_array['part_id']); ?>">修改</a>
+                                <a class="link-del" href="/Admin/Part/del?part_id=<?php echo ($bbs_part_array['part_id']); ?>">删除</a>
                             </td>
-                        </tr><?php endforeach; endif; ?>
+                        </tr>
+                        <?php endforeach; ?>
                     </table>
-                    <div class="list-page"><?php echo ($show); ?></div>
+                    <div class="list-page"><?php echo ($parts_page_show); ?></div>
                 </div>
             </form>
         </div>

@@ -15,19 +15,27 @@
                                 <th><i class="require-red">*</i>所属分区：</th>
                                 <td>
                                     <tagLib name="html" />
-                                    <html:select name="pid" options="parts" first="选择分区"/>
+                                    <html:select name="part_id" options="bbs_parts_info" first="选择分区"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>版主：</th>
+                                <td>
+                                    <tagLib name="html" />
+                                    <html:select name="user_id" options="bbs_users_info" first="选择版主"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th><i class="require-red">*</i>版块名：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cname" size="50" value="" type="text">
+                                    <input class="common-text required" autocomplete="off" id="title" name="cate_name" size="50" value="" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn-primary btn6 mr10" value="新增" type="submit">
+                                    <a href="/Admin/Cate" class="btn btn6">返回</a>
                                     
                                 </td>
                             </tr>

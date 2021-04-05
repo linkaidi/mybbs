@@ -20,9 +20,9 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
+                <li><a href="#"><?=$_SESSION['userInfo']['uname']?></a></li>
                 <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="/Admin/Login/logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -96,9 +96,20 @@
                     <tbody>
                         <tr>
                             <th><i class="require-red">*</i>分区名：</th>
-                            <input type="hidden" name="pid" value="<?php echo ($part['pid']); ?>">
+                            <input type="hidden" name="part_id" value="<?=$bbs_part_info['part_id']?>">
                             <td>
-                                <input class="common-text required" id="title" name="pname" size="50" value="<?php echo ($part['pname']); ?>" type="text">
+                                <input class="common-text required" autocomplete="off" id="title" name="part_name" size="50" value="<?php echo ($bbs_part_info['part_name']); ?>" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="120"><i class="require-red">*</i>用户权限：</th>
+                            <td>
+                                <select name="user_id" id="catid" class="required">
+                                    <option value="">请选择</option>
+                                    <?php foreach ($bbs_part_users_info as $user_id=>$user_name) :?>
+                                    <option value="<?=$user_id?>" <?php if($bbs_part_info['user_id'] == $user_id){echo 'selected';}?>><?php echo ($user_name); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </td>
                         </tr>
                         <tr>

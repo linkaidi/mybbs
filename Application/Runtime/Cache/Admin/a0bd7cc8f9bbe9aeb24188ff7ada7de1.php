@@ -20,9 +20,9 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
+                <li><a href="#"><?=$_SESSION['userInfo']['uname']?></a></li>
                 <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="/Admin/Login/logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -94,14 +94,25 @@
                 <form action="/Admin/Cate/update" method="POST" id="myform" name="myform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody>
-                            <input type="hidden" name="cid" value="<?php echo ($_GET['cid']); ?>">
+                            <input type="hidden" name="cate_id" value="<?php echo ($_GET['cate_id']); ?>">
                             <tr>
                                 <th><i class="require-red">*</i>所属分区：</th>
                                 <td>
-                                    <select name="pid" id="">
+                                    <select name="part_id" id="">
                                         <option value="">选择分区</option>
-                                        <?php foreach($parts as $k=>$v) : ?>
-                                        <option value="<?php echo ($k); ?>" <?php if($cate['pid'] === "$k"){echo 'selected';}?>><?php echo ($v); ?></option>
+                                        <?php foreach($bbs_parts_name_list as $bbs_parts_id=>$bbs_parts_name) : ?>
+                                        <option value="<?php echo ($bbs_parts_id); ?>" <?php if($bbs_cate_info['part_id'] === "$bbs_parts_id"){echo 'selected';}?>><?php echo ($bbs_parts_name); ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>版主：</th>
+                                <td>
+                                    <select name="user_id" id="">
+                                        <option value="">选择版主</option>
+                                        <?php foreach($bbs_users_name_list as $bbs_users_id=>$bbs_users_name) : ?>
+                                        <option value="<?php echo ($bbs_users_id); ?>" <?php if($bbs_cate_info['user_id'] === "$bbs_users_id"){echo 'selected';}?>><?php echo ($bbs_users_name); ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
@@ -109,14 +120,14 @@
                             <tr>
                                 <th><i class="require-red">*</i>版块名：</th>
                                 <td>
-                                    <input class="common-text required" id="title" name="cname" size="50" value="<?php echo ($cate['cname']); ?>" type="text">
+                                    <input class="common-text required" id="title" name="cate_name" size="50" value="<?php echo ($bbs_cate_info['cate_name']); ?>" type="text">
                                 </td>
                             </tr>
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
-                                    
+                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
+                                    <a href="/Admin/Cate" class="btn btn6">返回</a>
                                 </td>
                             </tr>
                         </tbody></table>

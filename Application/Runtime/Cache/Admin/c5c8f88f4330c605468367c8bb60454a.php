@@ -20,9 +20,9 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
+                <li><a href="#"><?=$_SESSION['userInfo']['uname']?></a></li>
                 <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="/Admin/Login/logout">退出</a></li>
             </ul>
         </div>
     </div>
@@ -96,35 +96,48 @@
                     <tbody>
                         <tr>
                             <th><i class="require-red">*</i>用户名：</th>
-                            <input type="hidden" name="uid" value="<?php echo ($user['uid']); ?>">
+                            <input type="hidden" name="user_id" value="<?php echo ($user_data_array['user_id']); ?>">
                             <td>
-                                <input class="common-text required" id="title" name="uname" size="50" value="<?php echo ($user['uname']); ?>" type="text">
+                                <input class="common-text required" id="title" name="user_name" size="50" value="<?php echo ($user_data_array['user_name']); ?>" type="text">
                             </td>
                         </tr>
                         <tr>
-                            <th width="120"><i class="require-red">*</i>用户权限：</th>
+                            <th width="120"><i class="require-red">*</i>用户等级：</th>
                             <td>
-                                <select name="author" id="catid" class="required">
+                                <select name="user_level" id="catid" class="required">
                                         <option value="">请选择</option>
-                                        <option value="p"<?php if ($user['author'] === 'p') {echo 'selected';}?>>普通用户</option>
-                                        <option value="a"<?php if ($user['author'] === 'a') {echo 'selected';}?>>普通管理员</option>
-                                        <option value="r"<?php if ($user['author'] === 'r') {echo 'selected';}?>>超级管理员</option>
+                                        <option value="1"<?php if ($user_data_array['user_level'] === '1') {echo 'selected';}?>>普通用户</option>
+                                        <option value="2"<?php if ($user_data_array['user_level'] === '2') {echo 'selected';}?>>会员</option>
+                                        <option value="3"<?php if ($user_data_array['user_level'] === '3') {echo 'selected';}?>>版主</option>
+                                        <option value="4"<?php if ($user_data_array['user_level'] === '4') {echo 'selected';}?>>区主</option>
+                                        <option value="5"<?php if ($user_data_array['user_level'] === '5') {echo 'selected';}?>>管理员</option>
+                                        <option value="6"<?php if ($user_data_array['user_level'] === '6') {echo 'selected';}?>>站长</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <th><i class="require-red"></i>用户头像：</th>
+                            <th width="120"><i class="require-red">*</i>用户状态：</th>
                             <td>
-                                <input name="uface" id="" type="file">
-                                <img src="/<?php echo ($user["uface"]); ?>">
+                                <select name="user_status" id="catid" class="required">
+                                        <option value="">请选择</option>
+                                        <option value="1"<?php if ($user_data_array['user_status'] === '1') {echo 'selected';}?>>正常</option>
+                                        <option value="2"<?php if ($user_data_array['user_status'] === '2') {echo 'selected';}?>>禁用</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
                             <th><i class="require-red">*</i>用户性别：</th>
                             <td>
-                                <input class="common-text" name="sex" size="50" value="m" type="radio"<?php if ($user['sex'] === 'm') {echo 'checked';}?>> 男
-                                <input class="common-text" name="sex" size="50" value="w" type="radio"<?php if ($user['sex'] === 'w') {echo 'checked';}?>> 女
-                                <input class="common-text" name="sex" size="50" value="x" type="radio"<?php if ($user['sex'] === 'x') {echo 'checked';}?>> 保密
+                                <input class="common-text" name="user_sex" size="50" value="1" type="radio"<?php if ($user_data_array['user_sex'] === '1') {echo 'checked';}?>> 保密
+                                <input class="common-text" name="user_sex" size="50" value="2" type="radio"<?php if ($user_data_array['user_sex'] === '2') {echo 'checked';}?>> 男
+                                <input class="common-text" name="user_sex" size="50" value="3" type="radio"<?php if ($user_data_array['user_sex'] === '3') {echo 'checked';}?>> 女
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red"></i>用户头像：</th>
+                            <td>
+                                <input name="user_face" id="" type="file">
+                                <?php echo ($html_user_face); ?>
                             </td>
                         </tr>
                         <tr>
