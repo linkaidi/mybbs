@@ -14,15 +14,15 @@
                 <ul class="admin_items">
                     <li>
                         <label for="user">用户名：</label>
-                        <input type="text" name="user_name" value="" id="user" size="35" class="admin_input_style" />
+                        <input type="text" name="user_name" autocomplete="off" value="" id="user" size="35" class="admin_input_style" />
                     </li>
                     <li>
                         <label for="pwd">密码：</label>
-                        <input type="password" name="user_password" value="" id="pwd" size="35" class="admin_input_style" />
+                        <input type="password" name="user_password"  value="" id="pwd" size="35" class="admin_input_style" />
                     </li>
                     <li>
                         <label for="pwd">验证码：</label>
-                        <input type="text" name="user_code" value="" id="code" size="15" class="admin_input_style" />
+                        <input type="text" name="user_code" value="" autocomplete="off" id="code" size="15" class="admin_input_style" />
                         <img src="/Admin/Login/code" style="vertical-align: top;" alt="验证码" onclick="this.src='/Admin/Login/code?&x='+Math.random()">
                     </li>
                     <li>

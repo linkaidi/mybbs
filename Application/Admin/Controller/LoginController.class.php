@@ -21,7 +21,7 @@ class LoginController extends Controller {
         if (!( $verify->check($post_user_data_array['user_code']) )) {
             $this->error('验证码错误');
         }
-
+        
         // 从数据表获取用户的用户名密码
         $bbs_user_name_password_array = M('bbs_user')->where("user_level>2 AND user_name='{$post_user_data_array['user_name']}'")
                                             ->field('user_name,user_password')
@@ -44,7 +44,6 @@ class LoginController extends Controller {
     public function logout()
     {
         unset($_SESSION['userInfo']);
-        unset($_SESSION['flag']);
         $this->success('退出登录','/Admin/Login/login');
     }
     

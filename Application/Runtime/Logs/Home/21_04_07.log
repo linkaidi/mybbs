@@ -1,0 +1,53 @@
+[ 2021-04-07T01:42:59+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected '}'
+
+[ 2021-04-07T01:45:38+08:00 ] 127.0.0.1 /
+ERR: 1054:Unknown column 'null' in 'field list'
+ [ SQL语句 ] : SELECT `part_id`,`null` FROM `bbs_cate` 
+
+[ 2021-04-07T02:04:37+08:00 ] 127.0.0.1 /
+ERR: Call to a member function select() on array
+
+[ 2021-04-07T02:04:37+08:00 ] 127.0.0.1 /
+ERR: Call to a member function select() on array
+
+[ 2021-04-07T02:06:12+08:00 ] 127.0.0.1 /
+ERR: 1054:Unknown column 'user_nmame' in 'field list'
+ [ SQL语句 ] : SELECT `user_id`,`user_nmame` FROM `bbs_user` WHERE ( user_level=4 ) ORDER BY user_id 
+
+[ 2021-04-07T02:12:33+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected 'as' (T_AS), expecting ')'
+
+[ 2021-04-07T02:23:19+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-07T02:26:36+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF)
+
+[ 2021-04-07T02:45:13+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected end of file
+
+[ 2021-04-07T02:45:13+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected end of file
+
+[ 2021-04-07T02:45:14+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected end of file
+
+[ 2021-04-07T02:48:13+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected '<'
+
+[ 2021-04-07T02:52:55+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected ';'
+
+[ 2021-04-07T02:53:41+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected ';'
+
+[ 2021-04-07T02:53:42+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected ';'
+
+[ 2021-04-07T02:53:42+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected ';'
+
+[ 2021-04-07T03:11:24+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected ')', expecting ';'
+
