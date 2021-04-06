@@ -20,7 +20,7 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#"><?=$_SESSION['userInfo']['uname']?></a></li>
+                <li><a href="#"><?=$_SESSION['userInfo']['user_name']?></a></li>
                 <li><a href="#">修改密码</a></li>
                 <li><a href="/Admin/Login/logout">退出</a></li>
             </ul>

@@ -9,7 +9,7 @@ class CommonController extends Controller {
         // 重载父类里的构造方法
         parent::__construct();
         // 验证是否登录
-        if (empty($_SESSION['flag'])) {
+        if (empty($_SESSION['userInfo']['flag'])) {
             $this->error('请先登录','/Admin/Login/login');
         }
     }

@@ -134,3 +134,9 @@ ERR: 1054:Unknown column 'pid' in 'where clause'
 ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
  [ SQL语句 ] : UPDATE `bbs_cate` SET `cate_id`='1',`part_id`='1',`user_id`=NULL,`cate_name`='动作' WHERE ( cid= )
 
+[ 2021-04-06T17:54:40+08:00 ] 127.0.0.1 /Admin/]
+ERR: 无法加载控制器:]
+
+[ 2021-04-06T19:24:35+08:00 ] 127.0.0.1 /Admin/Login/doLogin
+ERR: Think\Model:filed方法不存在！
+
