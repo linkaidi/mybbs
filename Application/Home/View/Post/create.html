@@ -1,0 +1,25 @@
+<extend name="Index/index"/>
+<block name="content">
+    <!--内容部分start-->
+		<div class="content">			
+			<form action="{:U('Home/Post/save','','')}" method="POST">
+				<table height="60">
+					<tr>
+                        <input type="hidden" name="user_id" value="<?=$_SESSION['user_info']['user_id']?>">
+						<td><label>标题:</label></td>
+						<td><input type="text" name="post_title" size="50"></td>
+					</tr>
+					<tr>
+						<td><label>内容：</label></td>
+						<td><textarea name="post_content" rows="12" cols="80"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="发贴" style="width:100px;height:30px;"></td>
+					</tr>
+					
+				</table>
+			</form>
+				
+		</div>
+        <!--内容部分end-->
+</block>

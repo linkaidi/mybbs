@@ -1,0 +1,32 @@
+<extend name="Index/index"/>
+<block name="content">
+    <!--内容部分start-->
+		<div class="content">			
+			<form action="{:U('Home/Login/register')}" method="post">
+				<table align="center" width="300" height="60">
+					<tr>
+						<td><label>用户名:</label></td>
+						<td><input type="text" autocomplete="off" name="user_name"></td>
+					</tr>
+					<tr>
+						<td><label>密码:</label></td>
+						<td><input type="password" name="user_password"></td>
+					</tr>
+					<tr>
+						<td><label>确认密码:</label></td>
+						<td><input type="password" name="user_repassword"></td>
+					</tr>
+					<tr>
+						<td><label>手机号:</label></td>
+						<td><input type="text" autocomplete="off" name="user_phone"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="注册"></td>
+					</tr>
+					
+				</table>
+			</form>
+				
+		</div>
+		<!--内容部分end-->
+</block>

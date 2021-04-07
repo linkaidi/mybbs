@@ -35,10 +35,10 @@
         <div class="sidebar-content">
             <ul class="sidebar-list">
                 <li>
-                    <a href="/Admin/User/index"><i class="icon-font">&#xe003;</i>用户管理</a>
+                    <a href="<?php echo U('Admin/User/index');?>"><i class="icon-font">&#xe003;</i>用户管理</a>
                     <ul class="sub-menu">
-                        <li><a href="/Admin/User/index"><i class="icon-font">&#xe008;</i>查看用户</a></li>
-                        <li><a href="/Admin/User/create"><i class="icon-font">&#xe005;</i>添加用户</a></li>
+                        <li><a href="<?php echo U('Admin/User/index');?>"><i class="icon-font">&#xe008;</i>查看用户</a></li>
+                        <li><a href="<?php echo U('Admin/User/create');?>"><i class="icon-font">&#xe005;</i>添加用户</a></li>
 
                     </ul>
                 </li>
@@ -90,7 +90,7 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="/Admin/User/index" method="GET">
+                <form action="<?php echo U('Admin/User/index');?>" method="GET">
                     <table class="search-tab">
                         <tr>
                             <th width="120">用户性别:</th>
@@ -174,8 +174,8 @@
                             </td>
                             <td><?php echo (date("Y-m-d H:i:s",$v["user_register_time"])); ?></td>
                             <td>
-                                <a class="link-update" href="/Admin/user/edit?user_id=<?php echo ($v["user_id"]); ?>">修改</a>
-                                <a class="link-del" href="/Admin/user/del?user_id=<?php echo ($v["user_id"]); ?>">删除</a>
+                                <a class="link-update" href="/Admin/user/edit/user_id/<?php echo ($v["user_id"]); ?>">修改</a>
+                                <a class="link-del" href="/Admin/user/del/user_id/<?php echo ($v["user_id"]); ?>">删除</a>
                             </td>
                         </tr><?php endforeach; endif; ?>
                         <!-- <tr>

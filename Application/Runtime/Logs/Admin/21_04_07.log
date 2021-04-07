@@ -1,0 +1,84 @@
+[ 2021-04-07T23:11:00+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: syntax error, unexpected '[', expecting ')'
+
+[ 2021-04-07T23:12:46+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: 参数错误或者未定义:user_level
+
+[ 2021-04-07T23:12:47+08:00 ] 127.0.0.1 /Admin/User/index
+ERR: 参数错误或者未定义:user_level
+
+[ 2021-04-07T23:27:01+08:00 ] 127.0.0.1 /Admin/%7BU('User/Index/index?user_sex=1&user_level=&user_status=&user_name=
+ERR: 无法加载控制器:{U('User
+
+[ 2021-04-07T23:27:12+08:00 ] 127.0.0.1 /Admin/User
+ERR: syntax error, unexpected 'user_sex' (T_STRING), expecting ')'
+
+[ 2021-04-07T23:27:19+08:00 ] 127.0.0.1 /Admin/User/index/?user_sex=1&user_level=&user_status=1&user_name=
+ERR: syntax error, unexpected 'user_sex' (T_STRING), expecting ')'
+
+[ 2021-04-07T23:27:36+08:00 ] 127.0.0.1 /Admin/User/index/?user_sex=1&user_level=&user_status=1&user_name=
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-07T23:28:54+08:00 ] 127.0.0.1 /Admin/%7BU(?user_sex=&user_level=&user_status=&user_name=
+ERR: 无法加载控制器:{U(
+
+[ 2021-04-07T23:30:10+08:00 ] 127.0.0.1 /Admin/%7BU('User/Index/index','user_sex=1')%7D?user_sex=1&user_level=&user_status=&user_name=
+ERR: 无法加载控制器:{U('User
+
+[ 2021-04-07T23:30:14+08:00 ] 127.0.0.1 /Admin/%7BU('User/Index/index','user_sex=1')%7D?user_sex=1&user_level=&user_status=&user_name=
+ERR: 无法加载控制器:{U('User
+
+[ 2021-04-07T23:31:02+08:00 ] 127.0.0.1 /Admin/User
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-07T23:31:14+08:00 ] 127.0.0.1 /Admin/User
+ERR: syntax error, unexpected ';', expecting :: (T_PAAMAYIM_NEKUDOTAYIM)
+
+[ 2021-04-07T23:42:17+08:00 ] 127.0.0.1 /Admin/User/index/id/1?user_sex=&user_level=&user_status=&user_name=
+ERR: syntax error, unexpected 'user_sex' (T_STRING), expecting ')'
+
+[ 2021-04-07T23:42:38+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=1&user_status=&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:42:53+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=1&user_status=&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:42:58+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=1&user_status=&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:43:30+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=1&user_status=&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:43:34+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=1&user_status=&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:43:49+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=&user_status=1&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:43:53+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=&user_status=1&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:44:07+08:00 ] 127.0.0.1 /Admin/Admin/User/index?user_sex=&user_level=1&user_status=1&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:44:23+08:00 ] 127.0.0.1 /Admin/User/User/index?user_sex=&user_level=1&user_status=&user_name=
+ERR: 非法操作:User
+
+[ 2021-04-07T23:55:16+08:00 ] 127.0.0.1 /Admin/User
+ERR: syntax error, unexpected '/'
+
+[ 2021-04-07T23:55:24+08:00 ] 127.0.0.1 /Admin/User/NAN.html?user_sex=&user_level=&user_status=1&user_name=
+ERR: 非法操作:NAN
+
+[ 2021-04-07T23:55:45+08:00 ] 127.0.0.1 /Admin/User/NAN.html?user_sex=&user_level=&user_status=1&user_name=
+ERR: 非法操作:NAN
+
+[ 2021-04-07T23:56:32+08:00 ] 127.0.0.1 /Admin/Admin/User?user_sex=&user_level=&user_status=&user_name=
+ERR: 无法加载控制器:Admin
+
+[ 2021-04-07T23:57:13+08:00 ] 127.0.0.1 /Admin/User
+ERR: syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+
+[ 2021-04-07T23:57:43+08:00 ] 127.0.0.1 /Admin/User
+ERR: syntax error, unexpected ')', expecting ']'
+

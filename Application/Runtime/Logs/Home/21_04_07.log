@@ -51,3 +51,6 @@ ERR: syntax error, unexpected ';'
 [ 2021-04-07T03:11:24+08:00 ] 127.0.0.1 /
 ERR: syntax error, unexpected ')', expecting ';'
 
+[ 2021-04-07T18:21:22+08:00 ] 127.0.0.1 /
+ERR: syntax error, unexpected ';', expecting ')'
+

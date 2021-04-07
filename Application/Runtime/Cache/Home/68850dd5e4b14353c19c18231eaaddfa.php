@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -41,17 +41,14 @@
 			<!--登陆部分start-->
 			<div id="login" style="width:351px">
 
-					<if condition="$_SESSION['user_info']['flag'] eq true">
-						<if condition="$_SESSION['user_info']['user_level'] eq 'admin'">
-							<a href="{:U('Admin/Login/login','','')}">后台登录</a>
+					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>">后台登录</a>
 							管理员：
-							<else/>
-							用户：
-						</if>
+							<?php else: ?>
+							用户：<?php endif; ?>
 							<?=$_SESSION['user_info']['user_name']?>
-							<a href="{:U('Home/Login/logout','','')}">退出登录</a>
-					<else />
-						<form action="{:U('Home/Login/doLogin')}" method="POST">
+							<a href="<?php echo U('Home/Login/logout','','');?>">退出登录</a>
+					<?php else: ?>
+						<form action="<?php echo U('Home/Login/doLogin');?>" method="POST">
 							<table>
 							<tr>
 								<td>
@@ -78,12 +75,11 @@
 								<input type="submit" value="立即登录" />
 								</td>
 								<td>
-								<a href="{:U('Home/Login/signUp','','')}">立即注册</a>
+								<a href="<?php echo U('Home/Login/signUp','','');?>">立即注册</a>
 								</td>
 							</tr>
 							</table>
-						</form>	
-					</if>
+						</form><?php endif; ?>
 				
 				
 			</div>
@@ -95,7 +91,7 @@
 		  <!--菜单部分start-->
 		  <div id="menu">
 			<ul>
-			  <li><a href="{:U('Home/Index/index','','')}">首页</a></li>
+			  <li><a href="<?php echo U('Home/Index/index','','');?>">首页</a></li>
 			  <li class="line"></li>
 			  <li><a href="">论坛</a></li>
 			  <li class="line"></li>
@@ -174,72 +170,37 @@
 			
 		</div>
 		<!--网页头部end-->
-		<block name="content">
-		<!--内容部分start-->
-		<div class="content">	
-            <?php foreach ($bbs_parts_array as $bbs_part_array) :?>	
-            <!--分区部分start-->
-            <div class="section">
-                
-                <!--分区标题部分start-->
-                <div class="section_title">
-                  <span class="section_title_left">{$bbs_part_array['part_name']}</span>
-                  <span class="section_title_right">区主：<a href="">{$bbs_parters_array[$bbs_part_array['user_id']]}</a></span>
-                </div>
-                <!--分区标题部分end-->
-                
-                <!--分区内容部分start-->
-                <div class="section_content">
-                    <table cellspacing="0" celpadding="0">
-                    <?php
-                        
-                        // 版块总数
-                        $cates = count($bbs_part_array['cate_info']);
+		
+    <!--内容部分start-->
+		<div class="content">			
+			<form action="<?php echo U('Home/Login/register');?>" method="post">
+				<table align="center" width="300" height="60">
+					<tr>
+						<td><label>用户名:</label></td>
+						<td><input type="text" autocomplete="off" name="user_name"></td>
+					</tr>
+					<tr>
+						<td><label>密码:</label></td>
+						<td><input type="password" name="user_password"></td>
+					</tr>
+					<tr>
+						<td><label>确认密码:</label></td>
+						<td><input type="password" name="user_repassword"></td>
+					</tr>
+					<tr>
+						<td><label>手机号:</label></td>
+						<td><input type="text" autocomplete="off" name="user_phone"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="注册"></td>
+					</tr>
+					
+				</table>
+			</form>
+				
+		</div>
+		<!--内容部分end-->
 
-                        // 显示几行
-                        $row = $cates / 2;
-
-                        // 版块下标计数
-                        $key = 0;
-                    ?>
-                    <!-- 遍历版块信息数组 -->
-                    <?php for ($tr = 1;$tr <= $row;$tr++) : ?>
-                    <tr>
-                        <?php for ($td = 1;$td <= 3;$td++) :?>
-                        <?php
-                            // 每遍历一个版块，版块计数加1
-                            $key++;
-                            // 当版块计数大于版块总数时跳出循环
-                            if ($key > $cates) {break 2;}
-                        ?>
-                          <td width="33%">
-                              <span class="section_content_ico">
-                                  <img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
-                                </span>
-                                <dl>
-                                    <dd class="dd_title"><a href='{:U('Home/Post/create',['cate_id'=>$key],'')}'>{$bbs_part_array['cate_info'][$key-1]['cate_name']}</a></dd>
-                                    <dd>
-                                        <em>主题：54</em>,
-                                        <em>帖子：244</em>
-                                    </dd>
-                                    <dd>
-                                        <a href="">最后发表: 2012-11-1 10:22</a>
-                                    </dd>
-                                </dl>
-                            </td>
-                        <?php endfor; ?>
-                    </tr>
-                    <?php endfor; ?>
-                </table>
-            </div>
-                <!--分区内容部分end-->
-            </div>
-            <!--分区部分end-->
-            <?php endforeach; ?>
-            
-        </div>
-        <!--内容部分end-->
-        </block>
         <!--友情链接部分start-->
         <div id="friend_link">
             

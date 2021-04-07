@@ -38,39 +38,50 @@
 			<!--logo部分start-->
 			<div id="logo"></div>
 			<!--logo部分end-->
-			  
 			<!--登陆部分start-->
 			<div id="login" style="width:351px">
-			  <table>
-				<tr>
-				  <td>
-					<label>帐号</label>
-				  </td>
-				  <td>
-					<input type="text" autocomplete="off" name="user_name" />
-				  </td>
-				  <td width="80px">
-					<label><input type="checkbox" name="remember" />自动登录</label>
-				  </td>
-				  <td>
-					找回密码
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-					<label>密码</label>
-				  </td>
-				  <td>
-					<input type="password" name="user_password" />
-				  </td>
-				  <td>
-					<input type="submit" value="立即登录" />
-				  </td>
-				  <td>
-					立即注册
-				  </td>
-				</tr>
-			  </table>
+
+					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>">后台登录</a>
+							管理员：
+							<?php else: ?>
+							用户：<?php endif; ?>
+							<?=$_SESSION['user_info']['user_name']?>
+							<a href="<?php echo U('Home/Login/logout','','');?>">退出登录</a>
+					<?php else: ?>
+						<form action="<?php echo U('Home/Login/doLogin');?>" method="POST">
+							<table>
+							<tr>
+								<td>
+								<label>帐号</label>
+								</td>
+								<td>
+								<input type="text" autocomplete="off" name="user_name" />
+								</td>
+								<td width="80px">
+								<label><input type="checkbox" name="remember" />自动登录</label>
+								</td>
+								<td>
+								找回密码
+								</td>
+							</tr>
+							<tr>
+								<td>
+								<label>密码</label>
+								</td>
+								<td>
+								<input type="password" name="user_password" />
+								</td>
+								<td>
+								<input type="submit" value="立即登录" />
+								</td>
+								<td>
+								<a href="<?php echo U('Home/Login/signUp','','');?>">立即注册</a>
+								</td>
+							</tr>
+							</table>
+						</form><?php endif; ?>
+				
+				
 			</div>
 			<!--登陆部分start-->
 			
@@ -80,7 +91,7 @@
 		  <!--菜单部分start-->
 		  <div id="menu">
 			<ul>
-			  <li><a href="#">论坛</a></li>
+			  <li><a href="<?php echo U('Home/Index/index','','');?>">首页</a></li>
 			  <li class="line"></li>
 			  <li><a href="">论坛</a></li>
 			  <li class="line"></li>
@@ -189,7 +200,7 @@
                                   <img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
                                 </span>
                                 <dl>
-                                    <dd class="dd_title"><a href=''><?php echo ($bbs_part_array['cate_info'][$key-1]['cate_name']); ?></a></dd>
+                                    <dd class="dd_title"><a href='<?php echo U('Home/Post/create',['cate_id'=>$key],'');?>'><?php echo ($bbs_part_array['cate_info'][$key-1]['cate_name']); ?></a></dd>
                                     <dd>
                                         <em>主题：54</em>,
                                         <em>帖子：244</em>

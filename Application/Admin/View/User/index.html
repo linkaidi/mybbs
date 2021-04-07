@@ -7,7 +7,7 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="/Admin/User/index" method="GET">
+                <form action="{:U('Admin/User/index')}" method="GET">
                     <table class="search-tab">
                         <tr>
                             <th width="120">用户性别:</th>
@@ -98,8 +98,8 @@
                             </td>
                             <td>{$v.user_register_time|date="Y-m-d H:i:s",###}</td>
                             <td>
-                                <a class="link-update" href="/Admin/user/edit?user_id={$v.user_id}">修改</a>
-                                <a class="link-del" href="/Admin/user/del?user_id={$v.user_id}">删除</a>
+                                <a class="link-update" href="/Admin/user/edit/user_id/{$v.user_id}">修改</a>
+                                <a class="link-del" href="/Admin/user/del/user_id/{$v.user_id}">删除</a>
                             </td>
                         </tr>
                         </foreach>
