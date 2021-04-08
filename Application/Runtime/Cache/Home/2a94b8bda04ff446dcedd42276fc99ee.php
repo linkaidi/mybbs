@@ -41,11 +41,11 @@
 			<!--登陆部分start-->
 			<div id="login" style="width:351px">
 
-					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>">后台登录</a>
+					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>" target="_blank">后台登录</a>
 							管理员：
 							<?php else: ?>
 							用户：<?php endif; ?>
-							<?=$_SESSION['user_info']['user_name']?>
+							<?php echo ($_SESSION['user_info']['user_name']); ?>
 							<a href="<?php echo U('Home/Login/logout','','');?>">退出登录</a>
 					<?php else: ?>
 						<form action="<?php echo U('Home/Login/doLogin');?>" method="POST">
@@ -200,7 +200,7 @@
                                   <img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
                                 </span>
                                 <dl>
-                                    <dd class="dd_title"><a href='<?php echo U('Home/Post/create',['cate_id'=>$key],'');?>'><?php echo ($bbs_part_array['cate_info'][$key-1]['cate_name']); ?></a></dd>
+                                    <dd class="dd_title"><a href='<?php echo U('Home/Post/index',['part_id'=>$bbs_part_array['part_id'],'cate_id'=>$key],'');?>'><?php echo ($bbs_part_array['cate_info'][$key-1]['cate_name']); ?></a></dd>
                                     <dd>
                                         <em>主题：54</em>,
                                         <em>帖子：244</em>

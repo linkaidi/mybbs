@@ -173,33 +173,59 @@
 		
     <!--内容部分start-->
 		<div class="content">			
-			<form action="<?php echo U('Home/Login/register');?>" method="post">
-				<table align="center" width="300" height="60">
-					<tr>
-						<td><label>用户名:</label></td>
-						<td><input type="text" autocomplete="off" name="user_name"></td>
-					</tr>
-					<tr>
-						<td><label>密码:</label></td>
-						<td><input type="password" name="user_password"></td>
-					</tr>
-					<tr>
-						<td><label>确认密码:</label></td>
-						<td><input type="password" name="user_repassword"></td>
-					</tr>
-					<tr>
-						<td><label>手机号:</label></td>
-						<td><input type="text" autocomplete="off" name="user_phone"></td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="注册"></td>
-					</tr>
-					
-				</table>
-			</form>
+			<!--发帖按钮start-->
+			<div class="send_btn">
+				<div class="send">
+					<img src="/Public/Home/images/pn_post.png" />
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<!--发帖按钮end-->
+			
+			<!--帖子列表部分start-->
+			<div class="post_list" >
 				
-		</div>
-		<!--内容部分end-->
+				<!--帖子列表标题部分start-->
+				<div class="post_title">
+					<table cellspacing=0 cellpadding=0 width='100%'>
+						<tr>
+							<th class="list_title">帖子标题</th>
+							<th class="list_author">作者</th>
+							<th class="list_count">回复/查看</th>
+							<th class="list_ptime">最后发表</th>
+						</tr>
+					</table>
+				</div>
+				<!--帖子列表标题部分end-->
+				
+				<!--帖子列表内容部分start-->
+				<div class="post_content">
+					<table cellspacing=0 cellpadding=0 width='100%'>
+						<tr>
+							<td class="list_title"><a href="post.html">Comsenz 核心产品 Discuz! 7.1 正式版发布【2010.10.20更新】</a></td>
+							<td class="list_author">admin</td>
+							<td class="list_count">10/20</td>
+							<td class="list_ptime">2012-12-20</td>
+						</tr>
+
+						<tr>
+							<td class="list_title"> Comsenz 核心产品 Discuz! 7.1 正式版发布【2010.10.20更新】</td>
+							<td class="list_author">admin</td>
+							<td class="list_count">10/20</td>
+							<td class="list_ptime">2012-12-20</td>
+						</tr>
+						
+					</table>
+				</div>
+				<!--帖子列表内容部分end-->
+				
+			</div>
+			<!--帖子列表部分end-->
+			
+
+            
+        </div>
+        <!--内容部分end-->
 
         <!--友情链接部分start-->
         <div id="friend_link">

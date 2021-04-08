@@ -81,7 +81,7 @@ class LoginController extends Controller {
         
         if ( password_verify($post_user_data['user_password'],$bbs_user_info['user_password']) ) {
             $_SESSION['user_info']['user_name'] = $bbs_user_info['user_name'];
-            $_SESSION['user_info']['user_id'] = $bbs_user_info['user_id'];
+            $_SESSION['user_info']['user_id'] = (int)$bbs_user_info['user_id'];
             $_SESSION['user_info']['flag'] = true;
             // 如果用户等级大于2，则是管理员
             if ($bbs_user_info['user_level'] > 2) {

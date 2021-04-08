@@ -41,11 +41,11 @@
 			<!--登陆部分start-->
 			<div id="login" style="width:351px">
 
-					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>">后台登录</a>
+					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>" target="_blank">后台登录</a>
 							管理员：
 							<?php else: ?>
 							用户：<?php endif; ?>
-							<?=$_SESSION['user_info']['user_name']?>
+							<?php echo ($_SESSION['user_info']['user_name']); ?>
 							<a href="<?php echo U('Home/Login/logout','','');?>">退出登录</a>
 					<?php else: ?>
 						<form action="<?php echo U('Home/Login/doLogin');?>" method="POST">
@@ -175,10 +175,14 @@
 		<div class="content">			
 			<form action="<?php echo U('Home/Post/save','','');?>" method="POST">
 				<table height="60">
-					<tr>
-                        <input type="hidden" name="user_id" value="<?=$_SESSION['user_info']['user_id']?>">
+					<tr>	
+						版块：
+						<select name="cate_id" id="">
+							<option value="">请选择</option>
+							<?php if(is_array($bbs_cates_name_array)): foreach($bbs_cates_name_array as $key=>$cate_name): ?><option value="<?php echo ($key); ?>" <?php if($get_cate_id === $key){echo 'selected';} ?>><?php echo ($cate_name); ?></option><?php endforeach; endif; ?>	
+						</select>
 						<td><label>标题:</label></td>
-						<td><input type="text" name="post_title" size="50"></td>
+						<td><input type="text" autocomplete="off" name="post_title" size="50"></td>
 					</tr>
 					<tr>
 						<td><label>内容：</label></td>

@@ -100,3 +100,11 @@ ERR: Call to undefined function is_isset()
 [ 2021-04-08T05:10:31+08:00 ] 127.0.0.1 /
 ERR: syntax error, unexpected ')'
 
+[ 2021-04-08T23:54:46+08:00 ] 127.0.0.1 /Home/Post/save
+ERR: 1364:Field 'post_update_time' doesn't have a default value
+ [ SQL语句 ] : INSERT INTO `bbs_post` (`cate_id`,`post_title`,`post_content`,`user_id`,`post_create_time`) VALUES ('1','这是第一个帖子标题','这是一个帖子','21','1617897286')
+
+[ 2021-04-08T23:55:38+08:00 ] 127.0.0.1 /Home/Post/save
+ERR: 1364:Field 'post_update_time' doesn't have a default value
+ [ SQL语句 ] : INSERT INTO `bbs_post` (`cate_id`,`post_title`,`post_content`,`user_id`,`post_create_time`) VALUES ('1','这是第一个帖子','这是第一个帖子','21','1617897337')
+

@@ -1,0 +1,54 @@
+<extend name="Index/index"/>
+<block name="content">
+    <!--内容部分start-->
+		<div class="content">			
+			<!--发帖按钮start-->
+			<div class="send_btn">
+				<div class="send">
+					<a href="{:U('Home/Post/create/part_id/'.$get_part_id.'/cate_id/'.$get_cate_id,'','')}">
+						<img src="/Public/Home/images/pn_post.png" />
+					</a>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<!--发帖按钮end-->
+			
+			<!--帖子列表部分start-->
+			<div class="post_list" >
+				
+				<!--帖子列表标题部分start-->
+				<div class="post_title">
+					<table cellspacing=0 cellpadding=0 width='100%'>
+						<tr>
+							<th class="list_title">帖子标题</th>
+							<th class="list_author">作者</th>
+							<th class="list_count">回复/查看</th>
+							<th class="list_ptime">最后发表</th>
+						</tr>
+					</table>
+				</div>
+				<!--帖子列表标题部分end-->
+				
+				<!--帖子列表内容部分start-->
+				<div class="post_content">
+					<table cellspacing=0 cellpadding=0 width='100%'>
+						<foreach name="bbs_posts_array" item="bbs_post_array">
+						<tr>
+							<td class="list_title"><a href="">{$bbs_post_array.post_title}</a></td>
+							<td class="list_author">{$bbs_users_array[$bbs_post_array[user_id]]}</td>
+							<td class="list_count">{$bbs_post_array.post_reply_count}/{$bbs_post_array.post_visit_count}</td>
+							<td class="list_ptime">{$bbs_post_array.post_update_time|date='Y-m-d H:i:s',###}</td>
+						</tr>
+						</foreach>
+					</table>
+				</div>
+				<!--帖子列表内容部分end-->
+				
+			</div>
+			<!--帖子列表部分end-->
+			
+
+            
+        </div>
+        <!--内容部分end-->
+</block>

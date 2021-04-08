@@ -4,10 +4,16 @@
 		<div class="content">			
 			<form action="{:U('Home/Post/save','','')}" method="POST">
 				<table height="60">
-					<tr>
-                        <input type="hidden" name="user_id" value="<?=$_SESSION['user_info']['user_id']?>">
+					<tr>	
+						版块：
+						<select name="cate_id" id="">
+							<option value="">请选择</option>
+							<foreach name="bbs_cates_name_array" item="cate_name">								
+								<option value="{$key}" <?php if($get_cate_id === $key){echo 'selected';} ?>>{$cate_name}</option>	
+							</foreach>	
+						</select>
 						<td><label>标题:</label></td>
-						<td><input type="text" name="post_title" size="50"></td>
+						<td><input type="text" autocomplete="off" name="post_title" size="50"></td>
 					</tr>
 					<tr>
 						<td><label>内容：</label></td>

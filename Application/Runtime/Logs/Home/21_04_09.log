@@ -1,0 +1,19 @@
+[ 2021-04-09T00:31:39+08:00 ] 127.0.0.1 /Home/Post/index/cate_id/1
+ERR: Call to undefined function 2021-04-09 00:31:39()
+
+[ 2021-04-09T00:40:27+08:00 ] 127.0.0.1 /Home/Post/index/cate_id/1
+ERR: syntax error, unexpected '}', expecting ',' or ';'
+
+[ 2021-04-09T00:43:54+08:00 ] 127.0.0.1 /Home/Post/index/cate_id/1
+ERR: 1054:Unknown column 'user_name' in 'field list'
+ [ SQL语句 ] : SELECT `user_id`,`user_name` FROM `bbs_post` ORDER BY user_id 
+
+[ 2021-04-09T00:44:18+08:00 ] 127.0.0.1 /Home/Post/index/cate_id/1
+ERR: syntax error, unexpected ')', expecting ']'
+
+[ 2021-04-09T00:48:54+08:00 ] 127.0.0.1 /Home/Post/index/cate_id/1
+ERR: syntax error, unexpected '<', expecting ']'
+
+[ 2021-04-09T00:49:24+08:00 ] 127.0.0.1 /Home/Post/index/cate_id/1
+ERR: syntax error, unexpected ')', expecting ']'
+
