@@ -173,14 +173,28 @@
 		
     <!--内容部分start-->
 		<div class="content">			
-			<form action="<?php echo U('Home/Post/save','','');?>" method="POST">
+			<form action="<?php echo U('Home/Post/save',['cate_id'=>$_GET['cate_id'],'part_id'=>$_GET['part_id']],'');?>" method="post">
 				<table height="60">
-					<tr>	
-						版块：
-						<select name="cate_id" id="">
-							<option value="">请选择</option>
-							<?php if(is_array($bbs_cates_name_array)): foreach($bbs_cates_name_array as $key=>$cate_name): ?><option value="<?php echo ($key); ?>" <?php if($get_cate_id === $key){echo 'selected';} ?>><?php echo ($cate_name); ?></option><?php endforeach; endif; ?>	
-						</select>
+					<tr>
+						<td>
+                            <label>当前分区:</label>
+                        </td>
+						<td>
+                            <label><?php echo ($bbs_parts_name_array[$_GET['part_id']]); ?></label>
+                        </td>
+					</tr>
+                    <tr>
+                        <td>
+                            <label>版块:</label>
+                        </td>
+                        <td>
+                            <select name="cate_id" id="">
+								<option value="">请选择</option>
+								<?php if(is_array($bbs_cates_name_array)): foreach($bbs_cates_name_array as $cate_id=>$cate_name): ?><option value="<?php echo ($cate_id); ?>" <?php if($cate_id == $_GET['cate_id']){echo 'selected';}?>><?php echo ($cate_name); ?></option><?php endforeach; endif; ?>
+                            </select>
+                        </td>
+                    </tr>
+					<tr>
 						<td><label>标题:</label></td>
 						<td><input type="text" autocomplete="off" name="post_title" size="50"></td>
 					</tr>

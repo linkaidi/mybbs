@@ -224,6 +224,7 @@ em{
 	margin:10px auto;
 }
 .content .section .section_content td{
+	float: left;
 	height:74px;
 }
 .content .section .section_content .td_line{

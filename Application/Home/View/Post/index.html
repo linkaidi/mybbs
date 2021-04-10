@@ -5,9 +5,9 @@
 			<!--发帖按钮start-->
 			<div class="send_btn">
 				<div class="send">
-					<a href="{:U('Home/Post/create/part_id/'.$get_part_id.'/cate_id/'.$get_cate_id,'','')}">
-						<img src="/Public/Home/images/pn_post.png" />
-					</a>
+					<a href="{:U('Home/Post/create',['part_id'=>$_GET['part_id'],'cate_id'=>$_GET['cate_id']],'')}">
+                        <img src="/Public/Home/images/pn_post.png" />
+                    </a>
 				</div>
 				<div style="clear:both"></div>
 			</div>
@@ -33,12 +33,14 @@
 				<div class="post_content">
 					<table cellspacing=0 cellpadding=0 width='100%'>
 						<foreach name="bbs_posts_array" item="bbs_post_array">
-						<tr>
-							<td class="list_title"><a href="">{$bbs_post_array.post_title}</a></td>
-							<td class="list_author">{$bbs_users_array[$bbs_post_array[user_id]]}</td>
-							<td class="list_count">{$bbs_post_array.post_reply_count}/{$bbs_post_array.post_visit_count}</td>
-							<td class="list_ptime">{$bbs_post_array.post_update_time|date='Y-m-d H:i:s',###}</td>
-						</tr>
+							<tr>
+								<td class="list_title">
+									<a href="">{$bbs_post_array.post_title}</a>
+								</td>
+								<td class="list_author">{$bbs_users_array[$bbs_post_array[user_id]]}</td>
+								<td class="list_count">{$bbs_post_array.post_reply_count}/{$bbs_post_array.post_visit_count}</td>
+								<td class="list_ptime">{$bbs_post_array.post_update_time|date='Y-m-d H:i:s',###}</td>
+							</tr>
 						</foreach>
 					</table>
 				</div>

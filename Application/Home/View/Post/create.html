@@ -2,16 +2,30 @@
 <block name="content">
     <!--内容部分start-->
 		<div class="content">			
-			<form action="{:U('Home/Post/save','','')}" method="POST">
+			<form action="{:U('Home/Post/save',['cate_id'=>$_GET['cate_id'],'part_id'=>$_GET['part_id']],'')}" method="post">
 				<table height="60">
-					<tr>	
-						版块：
-						<select name="cate_id" id="">
-							<option value="">请选择</option>
-							<foreach name="bbs_cates_name_array" item="cate_name">								
-								<option value="{$key}" <?php if($get_cate_id === $key){echo 'selected';} ?>>{$cate_name}</option>	
-							</foreach>	
-						</select>
+					<tr>
+						<td>
+                            <label>当前分区:</label>
+                        </td>
+						<td>
+                            <label>{$bbs_parts_name_array[$_GET['part_id']]}</label>
+                        </td>
+					</tr>
+                    <tr>
+                        <td>
+                            <label>版块:</label>
+                        </td>
+                        <td>
+                            <select name="cate_id" id="">
+								<option value="">请选择</option>
+								<foreach name="bbs_cates_name_array" item="cate_name" key="cate_id">
+								<option value="{$cate_id}" <?php if($cate_id == $_GET['cate_id']){echo 'selected';}?>>{$cate_name}</option>
+								</foreach>
+                            </select>
+                        </td>
+                    </tr>
+					<tr>
 						<td><label>标题:</label></td>
 						<td><input type="text" autocomplete="off" name="post_title" size="50"></td>
 					</tr>

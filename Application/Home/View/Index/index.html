@@ -177,65 +177,51 @@
 		<block name="content">
 		<!--内容部分start-->
 		<div class="content">	
-            <?php foreach ($bbs_parts_array as $bbs_part_array) :?>	
+            <foreach name="bbs_parts_array" item="bbs_part_array">
             <!--分区部分start-->
             <div class="section">
                 
                 <!--分区标题部分start-->
                 <div class="section_title">
-                  <span class="section_title_left">{$bbs_part_array['part_name']}</span>
-                  <span class="section_title_right">区主：<a href="">{$bbs_parters_array[$bbs_part_array['user_id']]}</a></span>
+                  <span class="section_title_left">{$bbs_part_array.part_name}</span>
+                  <span class="section_title_right">区主：<a href="">{$bbs_users_array[$bbs_part_array[user_id]]}</a></span>
                 </div>
                 <!--分区标题部分end-->
                 
-                <!--分区内容部分start-->
-                <div class="section_content">
+				
+                <!--版块内容部分start-->
+                
+				<div class="section_content">
                     <table cellspacing="0" celpadding="0">
-                    <?php
-                        
-                        // 版块总数
-                        $cates = count($bbs_part_array['cate_info']);
 
-                        // 显示几行
-                        $row = $cates / 2;
-
-                        // 版块下标计数
-                        $key = 0;
-                    ?>
-                    <!-- 遍历版块信息数组 -->
-                    <?php for ($tr = 1;$tr <= $row;$tr++) : ?>
-                    <tr>
-                        <?php for ($td = 1;$td <= 3;$td++) :?>
-                        <?php
-                            // 每遍历一个版块，版块计数加1
-                            $key++;
-                            // 当版块计数大于版块总数时跳出循环
-                            if ($key > $cates) {break 2;}
-                        ?>
-                          <td width="33%">
-                              <span class="section_content_ico">
-                                  <img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
-                                </span>
-                                <dl>
-                                    <dd class="dd_title"><a href='{:U('Home/Post/index',['part_id'=>$bbs_part_array['part_id'],'cate_id'=>$key],'')}'>{$bbs_part_array['cate_info'][$key-1]['cate_name']}</a></dd>
-                                    <dd>
-                                        <em>主题：54</em>,
-                                        <em>帖子：244</em>
-                                    </dd>
-                                    <dd>
-                                        <a href="">最后发表: 2012-11-1 10:22</a>
-                                    </dd>
-                                </dl>
-                            </td>
-                        <?php endfor; ?>
-                    </tr>
-                    <?php endfor; ?>
-                </table>
-            </div>
-                <!--分区内容部分end-->
+                    	<tr>
+							<foreach name="bbs_part_array[cate_info]" item="cate_info">
+								<td width="33%">
+									<span class="section_content_ico">
+										<img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
+									</span>
+									<dl>
+										<dd class="dd_title"><a href='{:U('Home/Post/index',['part_id'=>"$cate_info[part_id]",'cate_id'=>"$cate_info[cate_id]"],'')}'>{$cate_info.cate_name}</a></dd>
+										<dd>
+											<em>主题：54</em>,
+											<em>帖子：244</em>
+										</dd>
+										<dd>
+											<a href="">最后发表: 2012-11-1 10:22</a>
+										</dd>
+									</dl>
+								</td>
+							</foreach>
+                    	</tr>
+					
+                   
+                	</table>
+            	</div>
+			
+                <!--版块内容部分end-->
             </div>
             <!--分区部分end-->
-            <?php endforeach; ?>
+            </foreach>
             
         </div>
         <!--内容部分end-->

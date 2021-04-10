@@ -176,9 +176,9 @@
 			<!--发帖按钮start-->
 			<div class="send_btn">
 				<div class="send">
-					<a href="<?php echo U('Home/Post/create/part_id/'.$get_part_id.'/cate_id/'.$get_cate_id,'','');?>">
-						<img src="/Public/Home/images/pn_post.png" />
-					</a>
+					<a href="<?php echo U('Home/Post/create',['part_id'=>$_GET['part_id'],'cate_id'=>$_GET['cate_id']],'');?>">
+                        <img src="/Public/Home/images/pn_post.png" />
+                    </a>
 				</div>
 				<div style="clear:both"></div>
 			</div>
@@ -204,11 +204,13 @@
 				<div class="post_content">
 					<table cellspacing=0 cellpadding=0 width='100%'>
 						<?php if(is_array($bbs_posts_array)): foreach($bbs_posts_array as $key=>$bbs_post_array): ?><tr>
-							<td class="list_title"><a href=""><?php echo ($bbs_post_array["post_title"]); ?></a></td>
-							<td class="list_author"><?php echo ($bbs_users_array[$bbs_post_array[user_id]]); ?></td>
-							<td class="list_count"><?php echo ($bbs_post_array["post_reply_count"]); ?>/<?php echo ($bbs_post_array["post_visit_count"]); ?></td>
-							<td class="list_ptime"><?php echo (date('Y-m-d H:i:s',$bbs_post_array["post_update_time"])); ?></td>
-						</tr><?php endforeach; endif; ?>
+								<td class="list_title">
+									<a href=""><?php echo ($bbs_post_array["post_title"]); ?></a>
+								</td>
+								<td class="list_author"><?php echo ($bbs_users_array[$bbs_post_array[user_id]]); ?></td>
+								<td class="list_count"><?php echo ($bbs_post_array["post_reply_count"]); ?>/<?php echo ($bbs_post_array["post_visit_count"]); ?></td>
+								<td class="list_ptime"><?php echo (date('Y-m-d H:i:s',$bbs_post_array["post_update_time"])); ?></td>
+							</tr><?php endforeach; endif; ?>
 					</table>
 				</div>
 				<!--帖子列表内容部分end-->

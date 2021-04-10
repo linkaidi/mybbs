@@ -173,52 +173,47 @@
 		
 		<!--内容部分start-->
 		<div class="content">	
-            <?php foreach ($bbs_parts_array as $bbs_part_array) :?>	
-            <!--分区部分start-->
+            <?php if(is_array($bbs_parts_array)): foreach($bbs_parts_array as $key=>$bbs_part_array): ?><!--分区部分start-->
             <div class="section">
                 
                 <!--分区标题部分start-->
                 <div class="section_title">
-                  <span class="section_title_left"><?php echo ($bbs_part_array['part_name']); ?></span>
-                  <span class="section_title_right">区主：<a href=""><?php echo ($bbs_parters_array[$bbs_part_array['user_id']]); ?></a></span>
+                  <span class="section_title_left"><?php echo ($bbs_part_array["part_name"]); ?></span>
+                  <span class="section_title_right">区主：<a href=""><?php echo ($bbs_users_array[$bbs_part_array[user_id]]); ?></a></span>
                 </div>
                 <!--分区标题部分end-->
                 
-                <!--分区内容部分start-->
-                <div class="section_content">
+				
+                <!--版块内容部分start-->
+                
+				<div class="section_content">
                     <table cellspacing="0" celpadding="0">
-                    <?php
- $cates = count($bbs_part_array['cate_info']); $row = $cates / 2; $key = 0; ?>
-                    <!-- 遍历版块信息数组 -->
-                    <?php for ($tr = 1;$tr <= $row;$tr++) : ?>
-                    <tr>
-                        <?php for ($td = 1;$td <= 3;$td++) :?>
-                        <?php
- $key++; if ($key > $cates) {break 2;} ?>
-                          <td width="33%">
-                              <span class="section_content_ico">
-                                  <img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
-                                </span>
-                                <dl>
-                                    <dd class="dd_title"><a href='<?php echo U('Home/Post/index',['part_id'=>$bbs_part_array['part_id'],'cate_id'=>$key],'');?>'><?php echo ($bbs_part_array['cate_info'][$key-1]['cate_name']); ?></a></dd>
-                                    <dd>
-                                        <em>主题：54</em>,
-                                        <em>帖子：244</em>
-                                    </dd>
-                                    <dd>
-                                        <a href="">最后发表: 2012-11-1 10:22</a>
-                                    </dd>
-                                </dl>
-                            </td>
-                        <?php endfor; ?>
-                    </tr>
-                    <?php endfor; ?>
-                </table>
+
+                    	<tr>
+							<?php if(is_array($bbs_part_array[cate_info])): foreach($bbs_part_array[cate_info] as $key=>$cate_info): ?><td width="33%">
+									<span class="section_content_ico">
+										<img src="/Public/Home/images/forum_new.gif" title="Discuz!程序发布" />
+									</span>
+									<dl>
+										<dd class="dd_title"><a href='<?php echo U('Home/Post/index',['part_id'=>"$cate_info[part_id]",'cate_id'=>"$cate_info[cate_id]"],'');?>'><?php echo ($cate_info["cate_name"]); ?></a></dd>
+										<dd>
+											<em>主题：54</em>,
+											<em>帖子：244</em>
+										</dd>
+										<dd>
+											<a href="">最后发表: 2012-11-1 10:22</a>
+										</dd>
+									</dl>
+								</td><?php endforeach; endif; ?>
+                    	</tr>
+					
+                   
+                	</table>
+            	</div>
+			
+                <!--版块内容部分end-->
             </div>
-                <!--分区内容部分end-->
-            </div>
-            <!--分区部分end-->
-            <?php endforeach; ?>
+            <!--分区部分end--><?php endforeach; endif; ?>
             
         </div>
         <!--内容部分end-->
