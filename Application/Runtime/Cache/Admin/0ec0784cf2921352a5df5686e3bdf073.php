@@ -97,39 +97,37 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="/Admin/Cate/index" method="GET">
+                <form action="<?php echo U('Admin/Post/index','','');?>" method="GET">
                     <table class="search-tab">
                         <tr>
-                            <th width="70">分区:</th>
+                            <th width="70">所属分区:</th>
                             <td>
                                 <select name="part_id" id="">
                                     <option value="">全部</option>
-                                    <?php foreach($bbs_parts_name_list as $bbs_parts_id=>$bbs_parts_name) : ?>
-                                    <option value="<?php echo ($bbs_parts_id); ?>" <?php if($get_cate_data['part_id'] === "$bbs_parts_id"){echo 'selected';}?>><?php echo ($bbs_parts_name); ?></option>
-                                    <?php endforeach; ?>
+                                    <?php if(is_array($bbs_parts_array)): foreach($bbs_parts_array as $key=>$bbs_part_array): ?><option value="<?php echo ($bbs_part_array["part_id"]); ?>" <?php if ($keep_search_condient['part_id'] === $bbs_part_array['part_id']){echo 'selected';}?>><?php echo ($bbs_part_array["part_name"]); ?></option><?php endforeach; endif; ?>
                                 </select>
                             </td>
-                            <th width="70">版块:</th>
+                            <th width="70">所属版块:</th>
                             <td>
                                 <select name="cate_id" id="">
                                     <option value="">全部</option>
-                                    <?php foreach($bbs_cates_name_list as $bbs_cates_id=>$bbs_cates_name) : ?>
-                                    <option value="<?php echo ($bbs_cates_id); ?>" <?php if($get_cate_data['cate_id'] === "$bbs_cates_id"){echo 'selected';}?>><?php echo ($bbs_cates_name); ?></option>
-                                    <?php endforeach; ?>
+                                    <?php if(is_array($cates_array)): foreach($cates_array as $key=>$cate_array): if(empty($cate_array["cate_name"])): ?><option value="" disabled><?php echo ($cate_array["cate_id"]); ?></option>
+                                            <?php else: ?>
+                                                <option value="<?php echo ($cate_array["cate_id"]); ?>" <?php if ($keep_search_condient['cate_id'] === $cate_array['cate_id']){echo 'selected';}?>>--<?php echo ($cate_array["cate_name"]); ?></option><?php endif; endforeach; endif; ?>
                                 </select>
                             </td>
-                            <th width="70">版主:</th>
+
+                            <th width="70">帖子标题:</th>
                             <td>
-                                <select name="user_id" id="">
-                                    <option value="">全部</option>
-                                    <?php foreach($bbs_users_name_list as $bbs_users_id=>$bbs_users_name) : ?>
-                                    <option value="<?php echo ($bbs_users_id); ?>" <?php if($get_cate_data['user_id'] === "$bbs_users_id"){echo 'selected';}?>><?php echo ($bbs_users_name); ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="post_title" value="<?php if ($keep_search_condient['post_title'] === $_GET['post_title']){echo $keep_search_condient['post_title'];}?>" id="" type="text">
+                            </td>
+                            <th width="70">帖子作者:</th>
+                            <td>
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="user_name" value="<?php if ($keep_search_condient['user_name'] === $_GET['user_name']){echo $keep_search_condient['user_name'];}?>" id="" type="text">
                             </td>
                             <td>
                                 <input class="btn btn-primary btn2" value="查询" type="submit">
-                                <a href="/Admin/Cate" class="btn btn-primary btn2">返回</a>
+                                <a href="<?php echo U('Admin/Post/index','','');?>" class="btn btn-primary btn2">返回</a>
                             </td>
                         </tr>
                     </table>
@@ -141,28 +139,40 @@
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th>分区ID</th>
-                            <th>分区名</th>
-                            <th>版块ID</th>
-                            <th>版块名</th>
-                            <th>版主</th>
+                            <th>帖子ID</th>
+                            <th>帖子标题</th>
+                            <th>所属分区</th>
+                            <th>所属版块</th>
+                            <th>帖子作者</th>
+                            <th>帖子浏览量</th>
+                            <th>帖子回复量</th>
+                            <th>发帖时间</th>
+                            <th>更新时间</th>
                             <th>操作</th>
                         </tr>
-                        <?php foreach($bbs_cates as $bbs_cate) :?>
-                        <tr>
-                            <td><?php echo ($bbs_cate['part_id']); ?></td>
-                            <td><?php echo ($bbs_parts_name_list[$bbs_cate['part_id']]); ?></td>
-                            <td><?php echo ($bbs_cate["cate_id"]); ?></td>
-                            <td><?php echo ($bbs_cate['cate_name']); ?></td>    
-                            <td><?php echo ($bbs_users_name_list[$bbs_cate['user_id']]); ?></td>
-                            <td>
-                                <a class="link-update" href="/Admin/Cate/edit?cate_id=<?php echo ($bbs_cate['cate_id']); ?>">修改</a>
-                                <a class="link-del" href="/Admin/Cate/del?cate_id=<?php echo ($bbs_cate['cate_id']); ?>">删除</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
+                        <?php if(is_array($bbs_posts_array)): foreach($bbs_posts_array as $key=>$bbs_post_array): ?><tr>
+                                <td><?php echo ($bbs_post_array["post_id"]); ?></td>
+                                <td>
+                                    <a href="">
+                                        <?php echo ($bbs_post_array["post_title"]); ?>
+                                    </a>
+                                </td>
+                                <td><?php echo ($bbs_parts_array[$bbs_post_array[part_id]][part_name]); ?></td>
+                                <td><?php echo ($cates_array[$bbs_post_array[cate_id]][cate_name]); ?></td>
+                                <td><?php echo ($bbs_users_name[$bbs_post_array[user_id]]); ?></td>
+                                <td><?php echo ($bbs_post_array["post_visit_count"]); ?></td>
+                                <td><?php echo ($bbs_post_array["post_reply_count"]); ?></td>
+                                <td><?php echo (date("Y-m-d H:i:s",$bbs_post_array["post_create_time"])); ?></td>
+                                <td><?php echo (date("Y-m-d H:i:s",$bbs_post_array["post_update_time"])); ?></td>
+                                <td>
+                                    <a href="">显示</a>
+                                    <a href="">加精</a>
+                                    <a href="">置顶</a>
+                                    <a href="">编辑</a>
+                                </td>
+                            </tr><?php endforeach; endif; ?>
                     </table>
-                    <div class="list-page"><?php echo ($cates_page_show); ?></div>
+                    <div class="list-page"><?php echo ($html_posts_page); ?></div>
                 </div>
             </form>
         </div>

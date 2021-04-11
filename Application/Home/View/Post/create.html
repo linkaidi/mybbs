@@ -1,6 +1,17 @@
 <extend name="Index/index"/>
+<block name="path">
+					<!--路径部分start-->
+					<div id="path">
+					  <a href="{:U('Home/Index/index','','')}" class="index"></a>
+					  <em></em>
+					  <a href="{:U('Home/Post/index',['part_id'=>$bbs_part_name['part_id'],'cate_id'=>$bbs_cate_name['cate_id']],'')}" class="path_menu" style="width:75px">{$bbs_part_name.part_name}  {$bbs_cate_name.cate_name}</a>
+					</div>
+					<!--路径部分end-->
+</block>
+<block name="none">
+</block>
 <block name="content">
-    <!--内容部分start-->
+	<!--内容部分start-->
 		<div class="content">			
 			<form action="{:U('Home/Post/save',['cate_id'=>$_GET['cate_id'],'part_id'=>$_GET['part_id']],'')}" method="post">
 				<table height="60">

@@ -1,15 +1,22 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>这是一个神奇的网站</title>
-  <meta name="keywords" content="论坛,PHP">
-  <meta name="description" content="最大的社区网站">
-  <meta http-equiv="X-UA-Compatible" content="IE=8">
-  <link rel="stylesheet" type="text/css" href="/Public/Home/css/style_1_common.css?gQK" /> 
-  <link rel="stylesheet" type="text/css" href="/Public/Home/css/style_1_forum_viewthread.css?gQK" /> 
-  <link rel="stylesheet" type="text/css" href="/Public/Home/css/layout.css">
-  <link rel="stylesheet" type="text/css" href="/Public/Home/css/css.css">
+	<meta charset="utf-8">
+	<title>这是一个神奇的网站</title>
+	<meta name="keywords" content="论坛,PHP">
+	<meta name="description" content="最大的社区网站">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<link rel="stylesheet" type="text/css" href="/Public/Home/css/style_1_common.css?gQK" /> 
+	<link rel="stylesheet" type="text/css" href="/Public/Home/css/style_1_forum_viewthread.css?gQK" /> 
+	<link rel="stylesheet" type="text/css" href="/Public/Home/css/layout.css">
+	<link rel="stylesheet" type="text/css" href="/Public/Home/css/css.css">
+	<style>
+		.list-page{padding:20px 0;text-align:center;}
+		.list-page a{margin:0 5px;padding:2px 7px;border:1px solid #ccc;background:#f3f3f3;}
+		.list-page a:hover{background:#e4e4e4;border:1px solid #908f8f;}
+		.list-page .current{margin:0 5px;padding:2px 7px;background:#f60;border:1px solid #fe8101;color:#fff;}
+		.list-page  li{display:inline-block;}
+	</style>
 </head>
 <body>
 <!--网页顶部start-->
@@ -40,7 +47,6 @@
 			<!--logo部分end-->
 			<!--登陆部分start-->
 			<div id="login" style="width:351px">
-
 					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>" target="_blank">后台登录</a>
 							管理员：
 							<?php else: ?>
@@ -102,7 +108,6 @@
 			</ul>
 		  </div>
 		  <!--菜单部分end-->
-			
 			<!--搜索部分start-->
 			<div id="search">
 				<table cellpadding="0" cellspacing="0">
@@ -118,53 +123,27 @@
 					<td class="search_btn">
 					  <button>搜索</button>
 					</td>
-					<td class="search_hot">
-					  <div>
-						<strong>热搜:</strong>
-						<a href="">交友</a>
-						<a href="">教育</a>
-						<a href="">幽默</a>
-						<a href="">搞笑</a>
-						<a href="">房产</a>
-						<a href="">购物</a>
-						<a href="">二手</a>
-						<a href="">衣服</a>
-						<a href="">鞋子</a>
-						<a href="">帮助</a>
-						<a href="">折扣</a>
-						<a href="">电影</a>
-					  </div>
+					
+
 					</td>
 				  </tr>
 				</table>
 			</div>
 			<!--搜索部分end-->
-			
+					
 			<!--小提示部分start-->
 			<div id="tip">
+				
+	<!--路径部分start-->
+	<div id="path">
+		<a href="<?php echo U('Home/Index/index','','');?>" class="index"></a>
+		<em></em>
+		<span class="path_menu" style="width:75px"><?php echo ($bbs_part_name["part_name"]); ?>  <?php echo ($bbs_cate_name["cate_name"]); ?></span>
+	</div>
+	<!--路径部分end-->
+
 			
-				<!--路径部分start-->
-				<div id="path">
-				  <a href="" class="index"></a>
-				  <em></em>
-				  <a href="" class="path_menu">论坛</a>
-				</div>
-				<!--路径部分end-->
-				
-				<!--统计部分start-->
-				<div id="count">
-				  今日: <em>1520</em>
-				  <span class="pipe">|</span>
-				  昨日: <em>1520</em>
-				  <span class="pipe">|</span>
-				  帖子: <em>1520</em>
-				  <span class="pipe">|</span>
-				  会员: <em>1520</em>
-				  <span class="pipe">|</span>
-				  欢迎新会员: <em><a href="">1520</a></em>
-				</div>
-				<!--统计部分end-->
-				
+
 			</div>
 			<!--小提示部分end-->
 			
@@ -199,27 +178,23 @@
 					</table>
 				</div>
 				<!--帖子列表标题部分end-->
-				
 				<!--帖子列表内容部分start-->
 				<div class="post_content">
 					<table cellspacing=0 cellpadding=0 width='100%'>
 						<?php if(is_array($bbs_posts_array)): foreach($bbs_posts_array as $key=>$bbs_post_array): ?><tr>
 								<td class="list_title">
-									<a href=""><?php echo ($bbs_post_array["post_title"]); ?></a>
+									<a href="<?php echo U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'');?>"><?php echo ($bbs_post_array["post_title"]); ?></a>
 								</td>
 								<td class="list_author"><?php echo ($bbs_users_array[$bbs_post_array[user_id]]); ?></td>
 								<td class="list_count"><?php echo ($bbs_post_array["post_reply_count"]); ?>/<?php echo ($bbs_post_array["post_visit_count"]); ?></td>
 								<td class="list_ptime"><?php echo (date('Y-m-d H:i:s',$bbs_post_array["post_update_time"])); ?></td>
 							</tr><?php endforeach; endif; ?>
 					</table>
+					<div class="list-page"><?php echo ($html_posts_page); ?></div>
 				</div>
 				<!--帖子列表内容部分end-->
-				
 			</div>
-			<!--帖子列表部分end-->
-			
-
-            
+			<!--帖子列表部分end-->       
         </div>
         <!--内容部分end-->
 

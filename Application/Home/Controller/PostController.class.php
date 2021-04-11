@@ -21,11 +21,28 @@ class PostController extends CommonController {
             $this->error('请选择分区发帖',U('Home/Index/index','',''),1);
         }
         
+        // 获取当前版块所属分区名
+        $bbs_part_name = M('bbs_part')->where('part_id='.$get_part_id)->find();
+        if (empty($bbs_part_name)) {
+            $this->error('无此分区');
+        }
+
+        // 获取当前版块名
+        $bbs_cate_name = M('bbs_cate')->where('cate_id='.$get_cate_id)->find();
+        if (empty($bbs_cate_name)) {
+            $this->error('无此版块');
+        }
         // 获取所属分区的版块信息
         $bbs_cates_name_array = M('bbs_cate')->where('part_id='.$get_part_id)->getField('cate_id,cate_name');
 
         // 获取所有下标为分区ID，值为分区名的数组
         $bbs_parts_name_array = M('bbs_part')->getField('part_id,part_name');
+
+        // 获取当前版块所属分区名
+        $this->assign('bbs_part_name',$bbs_part_name);
+
+        // 获取当前版块名
+        $this->assign('bbs_cate_name',$bbs_cate_name);
 
         // 输出所属分区的版块信息数组
         $this->assign('bbs_cates_name_array',$bbs_cates_name_array);
@@ -92,16 +109,55 @@ class PostController extends CommonController {
         // 判断版块ID是否get方式获取
         if (IS_GET) {
             // 获得版块ID
+            $get_part_id = I('get.part_id/d',0);
+            if (empty($get_part_id)) {
+                $this->error('请选择分区');
+            }
+ 
+            // 获得版块ID
             $get_cate_id = I('get.cate_id/d',0);
             if (empty($get_cate_id)) {
                 $this->error('请选择版块');
             }
-
+            
+            // 
+            $bbs_post_object = M('bbs_post');
+            // 获取帖子总数
+            $bbs_posts_count =  $bbs_post_object->where('part_id='.$get_part_id.' AND cate_id='.$get_cate_id)
+                                                ->count();
+            // 实例化分页类
+            $posts_page = new \Think\Page($bbs_posts_count,10);
+            // 分页模板输出
+            $html_posts_page = $posts_page->show();
             // 获取帖子信息数组
-            $bbs_posts_array = M('bbs_post')->where('cate_id='.$get_cate_id)->order('post_update_time desc')->select();
+            $bbs_posts_array =  $bbs_post_object->where('part_id='.$get_part_id.' AND cate_id='.$get_cate_id)
+                                                ->order('post_update_time desc')
+                                                ->limit($posts_page->firstRow.','.$posts_page->listRows)
+                                                ->select();
+
+            // 获取当前版块所属的分区名
+            $bbs_part_name = M('bbs_part')->where("part_id=".$get_part_id)->find();
+            if (empty($bbs_part_name)) {
+                $this->error('分区不存在');
+            }
+
+            // 获取当前版块名
+            $bbs_cate_name = M('bbs_cate')->where("cate_id=".$get_cate_id)->find();
+            if (empty($bbs_cate_name)) {
+                $this->error('版块不存在');
+            }
 
             // 获取用户ID为下标，用户名为值的数组
             $bbs_users_array = M('bbs_user')->getField('user_id,user_name');
+
+            // 分页模板输出
+            $this->assign('html_posts_page',$html_posts_page);
+
+            // 输出当前版块所属的分区名
+            $this->assign('bbs_part_name',$bbs_part_name);
+
+            // 输出当前版块名
+            $this->assign('bbs_cate_name',$bbs_cate_name);
 
             // 输出用户名数组
             $this->assign('bbs_users_array',$bbs_users_array);
@@ -115,7 +171,4 @@ class PostController extends CommonController {
             $this->error('非法进入',U('Home/Index/index','',''),1);
         }
     }
-
-    // 帖子详情页
-    
 }

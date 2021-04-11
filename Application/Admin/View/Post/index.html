@@ -1,0 +1,97 @@
+<extend name="Index/index"/>
+<block name="main">
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="{:U('Admin/Post/index','','')}" method="GET">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">所属分区:</th>
+                            <td>
+                                <select name="part_id" id="">
+                                    <option value="">全部</option>
+                                    <foreach name="bbs_parts_array" item="bbs_part_array">
+                                                <option value="{$bbs_part_array.part_id}" <?php if ($keep_search_condient['part_id'] === $bbs_part_array['part_id']){echo 'selected';}?>>{$bbs_part_array.part_name}</option>
+                                    </foreach>
+                                </select>
+                            </td>
+                            <th width="70">所属版块:</th>
+                            <td>
+                                <select name="cate_id" id="">
+                                    <option value="">全部</option>
+                                    <foreach name="cates_array" item="cate_array">
+                                            <empty name="cate_array.cate_name">
+                                                <option value="" disabled>{$cate_array.cate_id}</option>
+                                            <else />
+                                                <option value="{$cate_array.cate_id}" <?php if ($keep_search_condient['cate_id'] === $cate_array['cate_id']){echo 'selected';}?>>--{$cate_array.cate_name}</option>
+                                            </empty>
+                                    </foreach>
+                                </select>
+                            </td>
+
+                            <th width="70">帖子标题:</th>
+                            <td>
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="post_title" value="<?php if ($keep_search_condient['post_title'] === $_GET['post_title']){echo $keep_search_condient['post_title'];}?>" id="" type="text">
+                            </td>
+                            <th width="70">帖子作者:</th>
+                            <td>
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="user_name" value="<?php if ($keep_search_condient['user_name'] === $_GET['user_name']){echo $keep_search_condient['user_name'];}?>" id="" type="text">
+                            </td>
+                            <td>
+                                <input class="btn btn-primary btn2" value="查询" type="submit">
+                                <a href="{:U('Admin/Post/index','','')}" class="btn btn-primary btn2">返回</a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>帖子ID</th>
+                            <th>帖子标题</th>
+                            <th>所属分区</th>
+                            <th>所属版块</th>
+                            <th>帖子作者</th>
+                            <th>帖子浏览量</th>
+                            <th>帖子回复量</th>
+                            <th>发帖时间</th>
+                            <th>更新时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <foreach name="bbs_posts_array" item="bbs_post_array">
+                            <tr>
+                                <td>{$bbs_post_array.post_id}</td>
+                                <td>
+                                    <a href="">
+                                        {$bbs_post_array.post_title}
+                                    </a>
+                                </td>
+                                <td>{$bbs_parts_array[$bbs_post_array[part_id]][part_name]}</td>
+                                <td>{$cates_array[$bbs_post_array[cate_id]][cate_name]}</td>
+                                <td>{$bbs_users_name[$bbs_post_array[user_id]]}</td>
+                                <td>{$bbs_post_array.post_visit_count}</td>
+                                <td>{$bbs_post_array.post_reply_count}</td>
+                                <td>{$bbs_post_array.post_create_time|date="Y-m-d H:i:s",###}</td>
+                                <td>{$bbs_post_array.post_update_time|date="Y-m-d H:i:s",###}</td>
+                                <td>
+                                    <a href="">显示</a>
+                                    <a href="">加精</a>
+                                    <a href="">置顶</a>
+                                    <a href="">编辑</a>
+                                </td>
+                            </tr>
+                        </foreach>
+                    </table>
+                    <div class="list-page">{$html_posts_page}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</block>

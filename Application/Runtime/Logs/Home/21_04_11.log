@@ -1,0 +1,48 @@
+[ 2021-04-11T18:12:01+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6
+ERR: syntax error, unexpected ')', expecting ']'
+
+[ 2021-04-11T18:12:01+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6
+ERR: syntax error, unexpected ')', expecting ']'
+
+[ 2021-04-11T18:20:06+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6
+ERR: syntax error, unexpected 'if' (T_IF)
+
+[ 2021-04-11T19:29:52+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/4
+ERR: syntax error, unexpected ','
+
+[ 2021-04-11T19:30:21+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/4
+ERR: syntax error, unexpected ','
+
+[ 2021-04-11T19:31:31+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/4
+ERR: syntax error, unexpected '[', expecting ']'
+
+[ 2021-04-11T19:32:00+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/4
+ERR: Too few arguments to function getSm(), 0 passed in D:\phpstudy_pro\WWW\mybbs\Application\Runtime\Cache\Home\5407cde7fc5659e72187bde3857cb7ad.php on line 224 and exactly 1 expected
+
+[ 2021-04-11T19:32:16+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/4
+ERR: syntax error, unexpected '?>'
+
+[ 2021-04-11T23:42:05+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/18
+ERR: syntax error, unexpected '<', expecting variable (T_VARIABLE) or '{' or '$'
+
+[ 2021-04-11T23:42:09+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/18
+ERR: syntax error, unexpected '<', expecting variable (T_VARIABLE) or '{' or '$'
+
+[ 2021-04-11T23:42:25+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/18
+ERR: syntax error, unexpected '<', expecting variable (T_VARIABLE) or '{' or '$'
+
+[ 2021-04-11T23:45:34+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/18
+ERR: syntax error, unexpected ')', expecting variable (T_VARIABLE) or '{' or '$'
+
+[ 2021-04-11T23:52:05+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6/p/3.html
+ERR: syntax error, unexpected 'else' (T_ELSE)
+
+[ 2021-04-11T23:52:12+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6/p/3.html
+ERR: syntax error, unexpected 'else' (T_ELSE)
+
+[ 2021-04-11T23:52:27+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6/p/3.html
+ERR: syntax error, unexpected ')', expecting variable (T_VARIABLE) or '{' or '$'
+
+[ 2021-04-11T23:52:32+08:00 ] 127.0.0.1 /Home/Reply/create/post_id/6/p/3.html
+ERR: syntax error, unexpected '1' (T_LNUMBER), expecting variable (T_VARIABLE) or '{' or '$'
+
