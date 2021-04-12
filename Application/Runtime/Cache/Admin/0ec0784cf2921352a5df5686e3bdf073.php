@@ -154,7 +154,8 @@
                                 <td><?php echo ($bbs_post_array["post_id"]); ?></td>
                                 <td>
                                     <a href="">
-                                        <?php echo ($bbs_post_array["post_title"]); ?>
+                                        <?php if(($bbs_post_array["post_is_jing"]) == "1"): ?><span style="color:red"><?php echo ($bbs_post_array["post_title"]); ?></span><?php endif; ?>
+                                        <?php if(($bbs_post_array["post_is_jing"]) == "2"): ?><span><?php echo ($bbs_post_array["post_title"]); ?></span><?php endif; ?>
                                     </a>
                                 </td>
                                 <td><?php echo ($bbs_parts_array[$bbs_post_array[part_id]][part_name]); ?></td>
@@ -165,10 +166,27 @@
                                 <td><?php echo (date("Y-m-d H:i:s",$bbs_post_array["post_create_time"])); ?></td>
                                 <td><?php echo (date("Y-m-d H:i:s",$bbs_post_array["post_update_time"])); ?></td>
                                 <td>
-                                    <a href="">显示</a>
-                                    <a href="">加精</a>
-                                    <a href="">置顶</a>
-                                    <a href="">编辑</a>
+                                    <?php if(($bbs_post_array["post_is_display"]) == "1"): ?><a title="当前状态:显示" href="<?php echo U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>2],'');?>">
+                                            不显示
+                                        </a><?php endif; ?>
+                                    <?php if(($bbs_post_array["post_is_display"]) == "2"): ?><a title="当前状态:不显示" href="<?php echo U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>1],'');?>">
+                                            显示
+                                        </a><?php endif; ?>
+                                    <?php if(($bbs_post_array["post_is_jing"]) == "1"): ?><a title="当前状态:加精" href="<?php echo U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>4],'');?>">
+                                            不加精
+                                        </a><?php endif; ?>
+                                    <?php if(($bbs_post_array["post_is_jing"]) == "2"): ?><a title="当前状态:不加精" href="<?php echo U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>3],'');?>">
+                                            加精
+                                        </a><?php endif; ?>
+                                    <?php if(($bbs_post_array["post_is_top"]) == "1"): ?><a title="当前状态:置顶" href="<?php echo U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>6],'');?>">
+                                            不置顶
+                                        </a><?php endif; ?>
+                                    <?php if(($bbs_post_array["post_is_top"]) == "2"): ?><a title="当前状态:不置顶" href="<?php echo U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>5],'');?>">
+                                            置顶
+                                        </a><?php endif; ?>
+                                    
+                                    
+                                    <a href="<?php echo U('Admin/Post/edit',['post_id'=>$bbs_post_array['post_id']],'');?>">编辑</a>
                                 </td>
                             </tr><?php endforeach; endif; ?>
                     </table>

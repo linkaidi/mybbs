@@ -131,7 +131,7 @@ class PostController extends CommonController {
             $html_posts_page = $posts_page->show();
             // 获取帖子信息数组
             $bbs_posts_array =  $bbs_post_object->where('part_id='.$get_part_id.' AND cate_id='.$get_cate_id)
-                                                ->order('post_update_time desc')
+                                                ->order('post_is_top asc,post_update_time desc')
                                                 ->limit($posts_page->firstRow.','.$posts_page->listRows)
                                                 ->select();
 

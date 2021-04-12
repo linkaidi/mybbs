@@ -45,7 +45,16 @@
 						<foreach name="bbs_posts_array" item="bbs_post_array">
 							<tr>
 								<td class="list_title">
-									<a href="{:U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'')}">{$bbs_post_array.post_title}</a>
+									<eq name="bbs_post_array.post_is_jing" value="1">
+										<a href="{:U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'')}">
+											<span style="color:red;font-size:2em">{$bbs_post_array.post_title}</span>
+										</a>
+									</eq>	
+									<eq name="bbs_post_array.post_is_jing" value="2">
+										<a href="{:U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'')}">
+											<span>{$bbs_post_array.post_title}</span>
+										</a>
+									</eq>	
 								</td>
 								<td class="list_author">{$bbs_users_array[$bbs_post_array[user_id]]}</td>
 								<td class="list_count">{$bbs_post_array.post_reply_count}/{$bbs_post_array.post_visit_count}</td>

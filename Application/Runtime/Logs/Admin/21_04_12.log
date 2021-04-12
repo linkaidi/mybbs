@@ -142,3 +142,9 @@ ERR: syntax error, unexpected '}', expecting ',' or ';'
 [ 2021-04-12T03:20:22+08:00 ] 127.0.0.1 /Admin/Post/design.html
 ERR: 非法操作:design
 
+[ 2021-04-12T18:54:46+08:00 ] 127.0.0.1 /Admin/Post/edit
+ERR: 非法操作:edit
+
+[ 2021-04-12T18:55:25+08:00 ] 127.0.0.1 /Admin/Post/edit/post_id/1
+ERR: 非法操作:edit
+

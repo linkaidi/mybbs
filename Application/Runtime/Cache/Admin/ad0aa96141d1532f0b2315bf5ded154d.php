@@ -91,60 +91,41 @@
         </div>
     </div>
     
-    <!--/sidebar-->
-    <div class="main-wrap">
+<!--/sidebar-->
+<div class="main-wrap">
 
-        <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
-        </div>
-        <div class="result-wrap">
-            <div class="result-content">
-                <form action="/Admin/Cate/update" method="POST" id="myform" name="myform" enctype="multipart/form-data">
-                    <table class="insert-tab" width="100%">
-                        <tbody>
-                            <input type="hidden" name="cate_id" value="<?php echo ($_GET['cate_id']); ?>">
-                            <tr>
-                                <th><i class="require-red">*</i>所属分区：</th>
-                                <td>
-                                    <select name="part_id" id="">
-                                        <option value="">选择分区</option>
-                                        <?php foreach($bbs_parts_name_list as $bbs_parts_id=>$bbs_parts_name) : ?>
-                                        <option value="<?php echo ($bbs_parts_id); ?>" <?php if($bbs_cate_info['part_id'] === "$bbs_parts_id"){echo 'selected';}?>><?php echo ($bbs_parts_name); ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><i class="require-red">*</i>版主：</th>
-                                <td>
-                                    <select name="user_id" id="">
-                                        <option value="">选择版主</option>
-                                        <?php foreach($bbs_users_name_list as $bbs_users_id=>$bbs_users_name) : ?>
-                                        <option value="<?php echo ($bbs_users_id); ?>" <?php if($bbs_cate_info['user_id'] === "$bbs_users_id"){echo 'selected';}?>><?php echo ($bbs_users_name); ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><i class="require-red">*</i>版块名：</th>
-                                <td>
-                                    <input class="common-text required" id="title" name="cate_name" size="50" value="<?php echo ($bbs_cate_info['cate_name']); ?>" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <td>
-                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
-                                    <a href="/Admin/Cate" class="btn btn6">返回</a>
-                                </td>
-                            </tr>
-                        </tbody></table>
-                </form>
-            </div>
-        </div>
-
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">作品管理</a><span class="crumb-step">&gt;</span><span>新增作品</span></div>
     </div>
-    <!--/main-->
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="<?php echo U('Admin/Post/update',['post_id'=>$bbs_post_array['post_id']],'');?>" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <table class="insert-tab" width="100%">
+                    <tbody>
+                        <tr>
+                            <th><i class="require-red">*</i>帖子标题：</th>
+                            <td>
+                                <input class="common-text required" autocomplete="off" id="title" name="post_title" size="50" value="<?php echo ($bbs_post_array['post_title']); ?>" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>帖子内容：</th>
+                            <td><textarea name="post_content" autocomplete="off" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"><?php echo ($bbs_post_array["post_content"]); ?></textarea></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
+                                <a href="<?php echo U('Admin/Post/index','','');?>" class="btn btn6">返回</a>
+                            </td>
+                        </tr>
+                    </tbody></table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!--/main-->
 
 </div>
 </body>

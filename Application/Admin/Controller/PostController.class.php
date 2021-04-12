@@ -123,5 +123,131 @@ class PostController extends CommonController {
         }
     }
 
-    
+    // 获取帖子数据,显示表单修改
+    public function edit()
+    {
+        if (IS_GET) {
+            // 获取帖子ID
+            $get_post_id = I('get.post_id/d',0);
+            if (empty($get_post_id)) {
+                $this->error('请选择帖子编辑');
+            }
+
+            // 获取帖子ID对应的帖子数据
+            $bbs_post_array = M('bbs_post')->where('post_id='.$get_post_id)->find();
+            if (empty($bbs_post_array)) {
+                $this->error('此帖子不存在');
+            }
+
+            // 输出帖子数据
+            $this->assign('bbs_post_array',$bbs_post_array);
+
+            // 输出帖子编辑页面模板
+            $this->display();
+        } else {
+            $this->error('非法请求');
+        }
+    }
+
+    // 获取修改数据，保存
+    public function update()
+    {
+        if (IS_POST) {
+            // 接收修改帖子对应的帖子ID
+            $post_update_data['post_id'] = I('get.post_id/d',0);
+            if (empty($post_update_data['post_id'])) {
+                $this->error('请选择帖子编辑');
+            }
+
+            // 接收修改的帖子标题
+            $post_update_data['post_title'] = I('post.post_title/s','','/^[\S]+$/');
+            if (empty($post_update_data['post_title'])) {
+                $this->error('帖子标题不能为空');
+            }
+
+            // 接收修改的帖子内容
+            $post_update_data['post_content'] = I('post.post_content/s','','/^[\S]+$/');
+            if (empty($post_update_data['post_content'])) {
+                $this->error('帖子内容不能为空');
+            }
+
+            // 修改帖子更新时间
+            $post_upate_data['post_update_time']= time();
+
+            // 更新帖子修改信息
+            $bbs_post_update_result = M('bbs_post')->where('post_id='.$post_update_data['post_id'])->save($post_upate_data);
+
+            if ($bbs_post_update_result) {
+                $this->success('帖子修改成功');
+            } else {
+                $this->error('帖子修改失败');
+            }
+
+        } else {
+            $this->error('非法请求');
+        }
+    }
+
+    // 帖子前台显示或隐藏按钮
+    public function func_button()
+    {
+        if (IS_GET) {
+            // 接收帖子ID
+            $get_post_id = I('get.post_id/d',0);
+            if (empty($get_post_id)) {
+                $this->error('请选择帖子');
+            }
+
+            // 接收显示或隐藏代号
+            $get_post_button_code = I('get.post_button_code/d',0,'/^[123456]$/');
+            if (empty($get_post_id)) {
+                $this->error('非法操作');
+            }
+            
+            // 根据传入按钮代号匹配对应操作
+            switch ($get_post_button_code) {
+                // 当前状态是不显示，设置为显示
+                case '1':
+                    $bbs_post_update_result =  M('bbs_post')->where('post_id='.$get_post_id)
+                                                            ->save(['post_is_display'=>1]);
+                    break;
+                // 当前状态是显示，设置为不显示
+                case '2':
+                    $bbs_post_update_result =  M('bbs_post')->where('post_id='.$get_post_id)
+                                                            ->save(['post_is_display'=>2]);
+                    break;
+                // 当前状态是不加精，设置为加精
+                case '3':
+                    $bbs_post_update_result =  M('bbs_post')->where('post_id='.$get_post_id)
+                                                            ->save(['post_is_jing'=>1]);
+                    break;
+                // 当前状态是加精，设置为不加精
+                case '4':
+                    $bbs_post_update_result =  M('bbs_post')->where('post_id='.$get_post_id)
+                                                            ->save(['post_is_jing'=>2]);
+                    break;
+                // 当前状态是不置顶，设置为置顶
+                case '5':
+                    $bbs_post_update_result =  M('bbs_post')->where('post_id='.$get_post_id)
+                                                            ->save(['post_is_top'=>1]);
+                    break;
+                // 当前状态是置顶，设置为不置顶
+                case '6':
+                    $bbs_post_update_result =  M('bbs_post')->where('post_id='.$get_post_id)
+                                                            ->save(['post_is_top'=>2]);
+                    break;
+            }
+
+            if ($bbs_post_update_result) {
+                $this->success('操作成功');
+            } else {
+                $this->error('操作失败');
+            }
+        } else {
+            $this->error('非法请求');
+        }
+    }
+
+
+
 }

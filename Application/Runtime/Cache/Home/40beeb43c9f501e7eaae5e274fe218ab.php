@@ -47,7 +47,6 @@
 			<!--logo部分end-->
 			<!--登陆部分start-->
 			<div id="login" style="width:351px">
-
 					<?php if($_SESSION['user_info']['flag'] == true): if($_SESSION['user_info']['user_level'] == 'admin'): ?><a href="<?php echo U('Admin/Login/login','','');?>" target="_blank">后台登录</a>
 							管理员：
 							<?php else: ?>
@@ -109,7 +108,7 @@
 			</ul>
 		  </div>
 		  <!--菜单部分end-->
-			
+		  
 			<!--搜索部分start-->
 			<div id="search">
 				<table cellpadding="0" cellspacing="0">
@@ -125,11 +124,8 @@
 					<td class="search_btn">
 					  <button>搜索</button>
 					</td>
-					<td class="search_hot">
-					  <div>
-						<strong>热搜:</strong>
-						<?php if(is_array($bbs_parts_array)): foreach($bbs_parts_array as $key=>$bbs_part_array): ?><a href=""><?php echo ($bbs_part_array["part_name"]); ?></a><?php endforeach; endif; ?>
-					</div>
+					
+
 					</td>
 				  </tr>
 				</table>

@@ -108,6 +108,7 @@
 			</ul>
 		  </div>
 		  <!--菜单部分end-->
+		  
 			<!--搜索部分start-->
 			<div id="search">
 				<table cellpadding="0" cellspacing="0">
@@ -183,7 +184,12 @@
 					<table cellspacing=0 cellpadding=0 width='100%'>
 						<?php if(is_array($bbs_posts_array)): foreach($bbs_posts_array as $key=>$bbs_post_array): ?><tr>
 								<td class="list_title">
-									<a href="<?php echo U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'');?>"><?php echo ($bbs_post_array["post_title"]); ?></a>
+									<?php if(($bbs_post_array["post_is_jing"]) == "1"): ?><a href="<?php echo U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'');?>">
+											<span style="color:red;font-size:2em"><?php echo ($bbs_post_array["post_title"]); ?></span>
+										</a><?php endif; ?>	
+									<?php if(($bbs_post_array["post_is_jing"]) == "2"): ?><a href="<?php echo U('Home/Reply/create',['post_id'=>$bbs_post_array[post_id]],'');?>">
+											<span><?php echo ($bbs_post_array["post_title"]); ?></span>
+										</a><?php endif; ?>	
 								</td>
 								<td class="list_author"><?php echo ($bbs_users_array[$bbs_post_array[user_id]]); ?></td>
 								<td class="list_count"><?php echo ($bbs_post_array["post_reply_count"]); ?>/<?php echo ($bbs_post_array["post_visit_count"]); ?></td>

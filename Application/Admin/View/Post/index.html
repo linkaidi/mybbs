@@ -70,7 +70,12 @@
                                 <td>{$bbs_post_array.post_id}</td>
                                 <td>
                                     <a href="">
-                                        {$bbs_post_array.post_title}
+                                        <eq name="bbs_post_array.post_is_jing" value="1">
+                                            <span style="color:red">{$bbs_post_array.post_title}</span>
+                                        </eq>
+                                        <eq name="bbs_post_array.post_is_jing" value="2">
+                                            <span>{$bbs_post_array.post_title}</span>
+                                        </eq>
                                     </a>
                                 </td>
                                 <td>{$bbs_parts_array[$bbs_post_array[part_id]][part_name]}</td>
@@ -81,10 +86,39 @@
                                 <td>{$bbs_post_array.post_create_time|date="Y-m-d H:i:s",###}</td>
                                 <td>{$bbs_post_array.post_update_time|date="Y-m-d H:i:s",###}</td>
                                 <td>
-                                    <a href="">显示</a>
-                                    <a href="">加精</a>
-                                    <a href="">置顶</a>
-                                    <a href="">编辑</a>
+                                    <eq name="bbs_post_array.post_is_display" value="1">
+                                        <a title="当前状态:显示" href="{:U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>2],'')}">
+                                            不显示
+                                        </a>
+                                    </eq>
+                                    <eq name="bbs_post_array.post_is_display" value="2">
+                                        <a title="当前状态:不显示" href="{:U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>1],'')}">
+                                            显示
+                                        </a>
+                                    </eq>
+                                    <eq name="bbs_post_array.post_is_jing" value="1">
+                                        <a title="当前状态:加精" href="{:U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>4],'')}">
+                                            不加精
+                                        </a>
+                                    </eq>
+                                    <eq name="bbs_post_array.post_is_jing" value="2">
+                                        <a title="当前状态:不加精" href="{:U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>3],'')}">
+                                            加精
+                                        </a>
+                                    </eq>
+                                    <eq name="bbs_post_array.post_is_top" value="1">
+                                        <a title="当前状态:置顶" href="{:U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>6],'')}">
+                                            不置顶
+                                        </a>
+                                    </eq>
+                                    <eq name="bbs_post_array.post_is_top" value="2">
+                                        <a title="当前状态:不置顶" href="{:U('Admin/Post/func_button',['post_id'=>$bbs_post_array[post_id],'post_button_code'=>5],'')}">
+                                            置顶
+                                        </a>
+                                    </eq>
+                                    
+                                    
+                                    <a href="{:U('Admin/Post/edit',['post_id'=>$bbs_post_array['post_id']],'')}">编辑</a>
                                 </td>
                             </tr>
                         </foreach>
