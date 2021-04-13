@@ -129,8 +129,20 @@ class PostController extends CommonController {
             $posts_page = new \Think\Page($bbs_posts_count,10);
             // 分页模板输出
             $html_posts_page = $posts_page->show();
+            // 获取帖子信息数组的条件
+            $condient['part_id'] = ['eq',$get_part_id]; 
+            $condient['cate_id'] = ['eq',$get_cate_id]; 
+            // 帖子为显示状态的ID
+            $bbs_post_id_is_display_array = $bbs_post_object->where('post_is_display=1')->field('post_id')->select();
+            $post_id_is_display_string = '';
+            foreach ($bbs_post_id_is_display_array as $post_id_array) {
+                $post_id_is_display_string .= $post_id_array['post_id'].',';
+            }
+            $post_id_is_display_string = rtrim($post_id_is_display_string,',');
+            $condient['post_id'] = ['in',$post_id_is_display_string]; 
+
             // 获取帖子信息数组
-            $bbs_posts_array =  $bbs_post_object->where('part_id='.$get_part_id.' AND cate_id='.$get_cate_id)
+            $bbs_posts_array =  $bbs_post_object->where($condient)
                                                 ->order('post_is_top asc,post_update_time desc')
                                                 ->limit($posts_page->firstRow.','.$posts_page->listRows)
                                                 ->select();

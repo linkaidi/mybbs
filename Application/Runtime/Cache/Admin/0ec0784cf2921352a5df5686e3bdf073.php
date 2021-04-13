@@ -15,7 +15,7 @@
             <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
                 <li><a class="on" href="index.html">首页</a></li>
-                <li><a href="http://www.mycodes.net/" target="_blank">网站首页</a></li>
+                <li><a href="<?php echo U('Home/Index/index','','');?>" target="_blank">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
@@ -153,7 +153,7 @@
                         <?php if(is_array($bbs_posts_array)): foreach($bbs_posts_array as $key=>$bbs_post_array): ?><tr>
                                 <td><?php echo ($bbs_post_array["post_id"]); ?></td>
                                 <td>
-                                    <a href="">
+                                    <a href="<?php echo U('Admin/Reply/index',['post_id'=>$bbs_post_array['post_id']],'');?>">
                                         <?php if(($bbs_post_array["post_is_jing"]) == "1"): ?><span style="color:red"><?php echo ($bbs_post_array["post_title"]); ?></span><?php endif; ?>
                                         <?php if(($bbs_post_array["post_is_jing"]) == "2"): ?><span><?php echo ($bbs_post_array["post_title"]); ?></span><?php endif; ?>
                                     </a>

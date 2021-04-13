@@ -172,10 +172,10 @@ class PostController extends CommonController {
             }
 
             // 修改帖子更新时间
-            $post_upate_data['post_update_time']= time();
+            $post_update_data['post_update_time']= time();
 
             // 更新帖子修改信息
-            $bbs_post_update_result = M('bbs_post')->where('post_id='.$post_update_data['post_id'])->save($post_upate_data);
+            $bbs_post_update_result = M('bbs_post')->where('post_id='.$post_update_data['post_id'])->save($post_update_data);
 
             if ($bbs_post_update_result) {
                 $this->success('帖子修改成功');
@@ -247,7 +247,4 @@ class PostController extends CommonController {
             $this->error('非法请求');
         }
     }
-
-
-
 }

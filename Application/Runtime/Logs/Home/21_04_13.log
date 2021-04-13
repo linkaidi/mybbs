@@ -1,0 +1,15 @@
+[ 2021-04-13T21:43:37+08:00 ] 127.0.0.1 /Home/Post/index/part_id/1/cate_id/1
+ERR: 1054:Unknown column 'Array' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_post` WHERE `part_id` = 1 AND `cate_id` = 1 AND `post_id` IN (Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array) ORDER BY post_is_top asc,post_update_time desc LIMIT 0,10  
+
+[ 2021-04-13T21:44:30+08:00 ] 127.0.0.1 /Home/Post/index/part_id/1/cate_id/1
+ERR: 1054:Unknown column 'Array' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_post` WHERE `part_id` = 1 AND `cate_id` = 1 AND `post_id` IN (Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array) ORDER BY post_is_top asc,post_update_time desc LIMIT 0,10  
+
+[ 2021-04-13T21:44:31+08:00 ] 127.0.0.1 /Home/Post/index/part_id/1/cate_id/1
+ERR: 1054:Unknown column 'Array' in 'where clause'
+ [ SQL语句 ] : SELECT * FROM `bbs_post` WHERE `part_id` = 1 AND `cate_id` = 1 AND `post_id` IN (Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array,Array) ORDER BY post_is_top asc,post_update_time desc LIMIT 0,10  
+
+[ 2021-04-13T21:45:00+08:00 ] 127.0.0.1 /Home/Post/index/part_id/1/cate_id/1
+ERR: syntax error, unexpected '$bbs_posts_array' (T_VARIABLE)
+

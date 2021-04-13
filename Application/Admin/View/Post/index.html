@@ -69,7 +69,7 @@
                             <tr>
                                 <td>{$bbs_post_array.post_id}</td>
                                 <td>
-                                    <a href="">
+                                    <a href="{:U('Admin/Reply/index',['post_id'=>$bbs_post_array['post_id']],'')}">
                                         <eq name="bbs_post_array.post_is_jing" value="1">
                                             <span style="color:red">{$bbs_post_array.post_title}</span>
                                         </eq>

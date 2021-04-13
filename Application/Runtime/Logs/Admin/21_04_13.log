@@ -1,0 +1,12 @@
+[ 2021-04-13T21:57:51+08:00 ] 127.0.0.1 /Admin/Post/index
+ERR: syntax error, unexpected ')', expecting ']'
+
+[ 2021-04-13T21:57:51+08:00 ] 127.0.0.1 /Admin/Post/index
+ERR: syntax error, unexpected ')', expecting ']'
+
+[ 2021-04-13T21:57:58+08:00 ] 127.0.0.1 /Admin/Post/index
+ERR: syntax error, unexpected ')', expecting ']'
+
+[ 2021-04-13T23:47:28+08:00 ] 127.0.0.1 /Admin/Post/update/post_id/1
+ERR: Call to a member function buildSql() on int
+

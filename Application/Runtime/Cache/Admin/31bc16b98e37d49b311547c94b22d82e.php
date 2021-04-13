@@ -92,51 +92,26 @@
     </div>
     
     <div class="main-wrap">
-
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="<?php echo U('Admin/User/index');?>" method="GET">
+                <form action="<?php echo U('Admin/Reply/index',['post_id'=>$bbs_post_data_result[post_id]],'');?>" method="GET">
                     <table class="search-tab">
                         <tr>
-                            <th width="120">用户性别:</th>
+                            <th width="90">帖子回复作者:</th>
                             <td>
-                                <select name="user_sex" id="">
-                                    <option value="">全部</option>
-                                    <option value="1" <?php if($keep_search_condient['user_sex'] === '1'){ echo 'selected';}?>>保密</option>
-                                    <option value="2" <?php if($keep_search_condient['user_sex'] === '2'){ echo 'selected';}?>>男</option>
-                                    <option value="3" <?php if($keep_search_condient['user_sex'] === '3'){ echo 'selected';}?>>女</option>
-                                </select>
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="user_name" value="<?php if($keep_search_condient['user_name'] === $_GET['user_name']){echo $_GET['user_name'];}?>" id="" type="text">
                             </td>
-                            <th width="120">用户等级:</th>
+                            <th width="90">帖子回复内容:</th>
                             <td>
-                                <select name="user_level" id="">
-                                    <option value="">全部</option>
-                                    <option value="1" <?php if($keep_search_condient['user_level'] === '1'){ echo 'selected';}?>>普通用户</option>
-                                    <option value="2" <?php if($keep_search_condient['user_level'] === '2'){ echo 'selected';}?>>会员</option>
-                                    <option value="3" <?php if($keep_search_condient['user_level'] === '3'){ echo 'selected';}?>>版主</option>
-                                    <option value="4" <?php if($keep_search_condient['user_level'] === '4'){ echo 'selected';}?>>区主</option>
-                                    <option value="5" <?php if($keep_search_condient['user_level'] === '5'){ echo 'selected';}?>>管理员</option>
-                                    <option value="6" <?php if($keep_search_condient['user_level'] === '6'){ echo 'selected';}?>>站长</option>
-                                </select>
-                            </td>
-                            <th width="120">用户状态:</th>
-                            <td>
-                                <select name="user_status" id="">
-                                    <option value="">全部</option>
-                                    <option value="1" <?php if($keep_search_condient['user_status'] === '1'){ echo 'selected';}?>>正常</option>
-                                    <option value="2" <?php if($keep_search_condient['user_status'] === '2'){ echo 'selected';}?>>禁用</option>
-                                </select>
-                            </td>
-                            <th width="70">用户名:</th>
-                            <td>
-                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="user_name" value="<?php if(!(empty($keep_search_condient['user_name']))){echo $keep_search_condient['user_name'];} ?>" id="" type="text">
+                                <input class="common-text" autocomplete="off" placeholder="#模糊查询" name="reply_content" value="<?php if($keep_search_condient['reply_content'] === $_GET['reply_content']){echo $_GET['reply_content'];}?>" id="" type="text">
                             </td>
                             <td>
                                 <input class="btn btn-primary btn2" value="查询" type="submit">
-                                <a href="/Admin/User" class="btn btn-primary btn2">返回</a>
+                                <a href="<?php echo U('Admin/Reply/index',['post_id'=>$bbs_post_data_result[post_id]],'');?>" class="btn btn-primary btn2">返回</a>
+                                <a href="<?php echo U('Admin/Post/index','','');?>" class="btn btn-primary btn2">返回帖子列表</a>
                             </td>
                         </tr>
                     </table>
@@ -148,49 +123,68 @@
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th>用户编号</th>
-                            <th>用户名</th>
-                            <th>用户头像</th>
-                            <th>用户性别</th>
-                            <th>用户状态</th>
-                            <th>用户权限</th>
-                            <th>用户创建时间</th>
-                            <th>操作</th>
+                            <th>帖子ID</th>
+                            <th>帖子标题</th>  
+                            <th>所属分区</th>
+                            <th>所属版块</th>
+                            <th>帖子作者</th>
+                            <th>帖子浏览量</th>
+                            <th>帖子回复量</th>
+                            <th>发帖时间</th>
+                            <th>更新时间</th>
                         </tr>
-                        <?php if(is_array($users_data_array)): foreach($users_data_array as $key=>$v): ?><tr>
-                            <td><?php echo ($v["user_id"]); ?></td>
-                            <td><?php echo ($v["user_name"]); ?></td>
-                            <td>
-                                <img src="/<?php echo ($v["user_face"]); ?>" alt="">
-                            </td>
-                            <td>
-                                <?php switch($v["user_sex"]): case "1": ?>保密<?php break;?>
-                                    <?php case "2": ?>男<?php break;?>
-                                    <?php case "3": ?>女<?php break; endswitch;?>
-                            </td>
-                            <td>
-                                <?php switch($v["user_status"]): case "1": ?>正常<?php break;?>
-                                    <?php case "2": ?>禁用<?php break; endswitch;?>
-                            </td>
-                            <td>
-                                <?php switch($v["user_level"]): case "1": ?>普通用户<?php break;?>
-                                    <?php case "2": ?>会员<?php break;?>
-                                    <?php case "3": ?>版主<?php break;?>
-                                    <?php case "4": ?>区主<?php break;?>
-                                    <?php case "5": ?>管理员<?php break;?>
-                                    <?php case "6": ?>站长<?php break; endswitch;?>
-                            </td>
-                            <td><?php echo (date("Y-m-d H:i:s",$v["user_register_time"])); ?></td>
-                            <td>
-                                <a class="link-update" href="/Admin/user/edit/user_id/<?php echo ($v["user_id"]); ?>">修改</a>
-                                <a class="link-del" href="/Admin/user/del/user_id/<?php echo ($v["user_id"]); ?>">删除</a>
-                            </td>
-                        </tr><?php endforeach; endif; ?>
+                            <tr>
+                                <td><?php echo ($bbs_post_data_result["post_id"]); ?></td>
+                                <td>
+                                    <?php if(($bbs_post_data_result["post_is_jing"]) == "1"): ?><span style="color:red"><?php echo ($bbs_post_data_result["post_title"]); ?></span><?php endif; ?>
+                                    <?php if(($bbs_post_data_result["post_is_jing"]) == "2"): ?><span><?php echo ($bbs_post_data_result["post_title"]); ?></span><?php endif; ?>
+                                </td>
+                                
+                                <td><?php echo ($bbs_part_name_array[$bbs_post_data_result[part_id]]); ?></td>
+                                <td><?php echo ($bbs_cate_name_array[$bbs_post_data_result[cate_id]]); ?></td>
+                                <td><?php echo ($bbs_user_name_array[$bbs_post_data_result[user_id]]); ?></td>
+                                <td><?php echo ($bbs_post_data_result["post_visit_count"]); ?></td>
+                                <td><?php echo ($bbs_post_data_result["post_reply_count"]); ?></td>
+                                <td><?php echo (date("Y-m-d H:i:s",$bbs_post_data_result["post_create_time"])); ?></td>
+                                <td><?php echo (date("Y-m-d H:i:s",$bbs_post_data_result["post_update_time"])); ?></td>
+                            </tr>
+                            <tr>
+                                <th  colspan="9">帖子内容</th>
+                            </tr>
+                            <tr>
+                                <td colspan="9">
+                                    <?php echo ($bbs_post_data_result["post_content"]); ?>
+                                </td>
+                            </tr>
                     </table>
-                    <div class="list-page"><?php echo ($page_html_show); ?></div>
                 </div>
             </form>
         </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th>回复内容</th>
+                            <th>回复作者</th>
+                            <th>回复时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <?php if(is_array($bbs_reply_data_array)): foreach($bbs_reply_data_array as $key=>$bbs_reply_array): ?><tr>
+                                <td><?php echo ($bbs_reply_array["reply_content"]); ?></td>
+                                <td><?php echo ($bbs_user_name_array[$bbs_reply_array[user_id]]); ?></td>
+                                <td><?php echo (date("Y-m-d H:i:s",$bbs_reply_array["reply_create_time"])); ?></td>
+                                <td>
+                                    <a href="<?php echo U('Admin/Reply/edit',['reply_id'=>$bbs_reply_array['reply_id']],'');?>">编辑</a>
+                                    <a href="<?php echo U('Admin/Reply/delete',['reply_id'=>$bbs_reply_array['reply_id']],'');?>">删除</a>
+                                </td>
+                            </tr><?php endforeach; endif; ?>
+                    </table>
+                    <div class="list-page"><?php echo ($reply_list_show); ?></div>
+                </div>
+            </form>
+        </div>
+        
     </div>
 
 </div>
